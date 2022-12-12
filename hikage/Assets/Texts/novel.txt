@@ -1,0 +1,15 @@
+&img eventCG1 
+text" username"
+text1
+text2
+&button image 2 what where g g
+&chara Character1 
+&rmimg eventCG1 
+&img background1 
+text3
+&img eventCG2 
+text4
+&rmimg eventCG2
+&rmbutton wgf
+text5
+text6

@@ -1,0 +1,10 @@
+&img eventCG1 
+Good morning. Wishing you a very good morning !!
+&button 3 ボタン1 ボタン２ scenechange 
+Please make yourself fresh and prepared your breakfast and enjoy your breakfast. 
+&rmbutton 3 ボタン1 ボタン２ scenechange
+Are you feeling good? Then let's do some work. 
+Last night you did a party with your friends, so your house is full of dirt, lots of cans, bottles and candy trash. 
+You should manage your garbage. 
+Lets do it.  
+ゲームシーンに遷移
