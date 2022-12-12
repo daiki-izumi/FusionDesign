@@ -5,6 +5,8 @@ using UnityEngine.UI;
 //using TextScripts;
 using UnityEngine.Networking;
 using SimpleJSON;
+using UnityEngine.SceneManagement;
+using System;
 
 
 public class Story : MonoBehaviour
@@ -16,11 +18,15 @@ public class Story : MonoBehaviour
     //UIのGameObject
     public GameObject UIs = null;
 
-    public string now_speaker;
-    public string now_line;
+    private string now_speaker;
+    private string [] now_line;
 
     private Text speaker;
     private Text lines;
+
+    private int count;
+
+    private bool load_flag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,31 +36,46 @@ public class Story : MonoBehaviour
         speaker = UIs.transform.GetChild(1).GetComponentInChildren<Text>();
         //セリフ
         lines = UIs.transform.GetChild(2).GetComponentInChildren<Text>();
+        //カウント
+        count = 0;
         //デバッグ用
         int index_number = 1;
         StartCoroutine(load_line(index_number,(numnum) =>
         {
-            now_line = numnum;
             Debug.Log($"called [{numnum}]");
-            lines.text = split_line(now_line);
+            split_line(numnum, out now_line);
+            Debug.Log($"Now line is {now_line.Length}");
+            load_flag = true;
+            Debug.Log($"load is done");
         }));
-        //lines.text = "hi";
-        //他ファイルからの参照
-        //Scripts scr = new Scripts();
-        //lines.text = get_line((float)1.0);
-        //string line = "こんにちは、赤ちゃん。";
-        //lines.text = scr.split_line(line);
-        //Debug.Log(o.GetType());
-        //話者
-        //speaker.text = scr.load_line();
-        //テキスト内容
-        //Debug.Log(scr.now_line.GetType());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0) && load_flag)
+        {
+            while (count <= now_line.Length -1)
+            {
+                Debug.Log($"Count is {count}, {now_line.Length - 1}");
+                lines.text = now_line[count];
+                Debug.Log($"Clicked {now_line[count]}");
+                count += 1;
+            }
+            /*do
+            {
+                Debug.Log($"Count is {count}, {now_line.Length - 1}");
+                //lines.text = now_line[count];
+                //Debug.Log($"Clicked {now_line[count]}");
+                count += 1; 
+            } while (count < now_line.Length - 1);*/
+
+        }
+        else if (count == 0 && load_flag)
+        {
+            Debug.Log($"Not Clicked {now_line[0]}");
+            lines.text = now_line[0];
+        }
     }
     //*デバッグ用*セリフをGoogle スプレッドシートから取ってくる関数
     public IEnumerator load_line(int index_number, UnityEngine.Events.UnityAction<string> callback)//
@@ -91,20 +112,51 @@ public class Story : MonoBehaviour
     }
 
     //セリフを分割する関数
-    public string split_line(string lines)
+    public void split_line(string lines, out string [] line_split)
     {
-        //セリフ１行の長さ
-        //int line_horizontal = 15;
-        //セリフ１列の長さ
-        //int line_vertical = 2;
-        //セリフの「、」の数
-        int search_n_num = lines.IndexOf("、") + 1;
-        lines = lines.Insert(search_n_num, "\n");
-        //セリフの「。」の数
-        int search_end_num = lines.IndexOf("。");
+        //切り分ける文字列
+        //string lines = "こんにちは";//。こんばんは。ごきげんよう。";
+        //文字列内の「。」の個数
+        int num = lines.Length - lines.Replace("。", "").Length;
+        //出力する文字列
+        //string[] line_split;
+        //
+        int hoge;
+        if (num != 0)
+        {
+            //配列
+            line_split = new string[num];
+            hoge = 0;
+            for (int i = 0; i < num; i++)
+            {
+                int search_end_num = lines.IndexOf("。") + 1;
+                line_split[i] = lines.Substring(0, search_end_num);
+                lines = lines.Substring(line_split[i].Length);
+            }
+        }
+        else
+        {
+            //「。」が文字列にない場合
+            line_split = new string[1];
+            hoge = 1;
+            line_split[0] = lines;
 
-        
-        Debug.Log("search_end_num is " + search_end_num);
-        return lines;
+        }
+        //デバッグ用
+        /*for (int i = 0; i < num + hoge; i++)
+        {
+            Console.WriteLine($"{line_split[i]}");
+        }
+        Console.WriteLine($"{line_split.Length}");*/
+        //return line_split;
+    }
+    //シーン移動
+    public void MoveScene(double root)
+    {
+        double root_point1 = Math.Floor(root * 10) / 10;
+        int root_path = (int)(root - root_point1);
+        //小数第一位によって分岐
+        if (root_path == 0)
+            SceneManager.LoadScene("MainScene");
     }
 }
