@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d4148cf4d04324aab9a5db8b7dae2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ImageButton: {fileID: 0}
+  _ImageButton: {fileID: 21300000, guid: 36d3cea98a053ed40b29b06c0d4d057d, type: 3}
   _ButtonObject: {fileID: 2100461818}
-  _ButtonPrefab: {fileID: 6906951302291945398, guid: 320a1f8cda82395448f531a027606e4f, type: 3}
+  _ButtonPrefab: {fileID: 1267653461182793324, guid: b0c8411dd9761b7499320fb037c225e7, type: 3}
 --- !u!4 &177726946
 Transform:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _background1: {fileID: 21300000, guid: f626e064af699774a8c56821f678b9bf, type: 3}
-  _eventCG1: {fileID: 21300000, guid: 5f79646157a99db4ab7403d1b68bdbba, type: 3}
+  _eventCG1: {fileID: 21300000, guid: 432f5efdb002aae4e93943d8eb0449d7, type: 3}
   _eventCG2: {fileID: 21300000, guid: ed572bb43f744674a9d2d6b719f34ae2, type: 3}
   _backgroundObject: {fileID: 1851807224}
   _eventObject: {fileID: 2087453118}

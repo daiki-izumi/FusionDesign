@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace NovelGame
-{
+namespace QuizGame { 
     public class ButtonManager : MonoBehaviour
     {
         
@@ -95,7 +94,7 @@ namespace NovelGame
         {
             int ButtonNum = int.Parse(num);
             string[] ButtonText = { ButtonText1, ButtonText2, ButtonText3, ButtonText4 };
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < ButtonNum; i++)
             {
                 GameObject.Destroy(_ButtonPrehabObject[ButtonText[i]]);
             }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-namespace NovelGame
+namespace QuizGame
 {
     public class UserScriptManager : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace NovelGame
         [SerializeField] TextAsset _textFile_2;
         // 文章中の文（ここでは１行ごと）を入れておくためのリスト
         List<string> _sentences = new List<string>();
-        InputUserInfo inputuserinfo = new InputUserInfo();
+       
         public static int StoryFlag;
       
 

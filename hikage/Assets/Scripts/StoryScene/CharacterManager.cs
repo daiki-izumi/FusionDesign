@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace NovelGame
+namespace QuizGame
 {
     public class CharacterManager : MonoBehaviour
     {

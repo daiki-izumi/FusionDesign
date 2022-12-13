@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-namespace NovelGame
+namespace QuizGame
 {
     public class MainTextController : MonoBehaviour
     {
