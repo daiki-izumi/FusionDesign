@@ -51,10 +51,10 @@ namespace NovelGame
             Quaternion rotation = Quaternion.identity;
             Transform parent = parentObject.transform;
 
-          
 
+           
 
-           for (int i = 0; i < ButtonNum; i++)
+            for (int i = 0; i < ButtonNum; i++)
             {
                 if (ButtonNum == 3)
                 {
@@ -68,6 +68,7 @@ namespace NovelGame
                 position_2.x += 6.0f;
                 position_3.x += 4.0f;
                 int n = i;
+                ListButton.GetComponent<Image>().sprite = image;//生成されたオブジェクト[item]のspriteをimageに
                 ListButton.GetComponent<Button>().onClick.AddListener(() => MyOnClick(n));
                 
                 _ButtonPrehabObject.Add(ButtonText[i], ListButton);
