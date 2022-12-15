@@ -24,6 +24,8 @@ namespace QuizGame {
 
         GameObject ListButton;
         GameObject NextButton;
+        bool PushFlag = true;
+
         void Awake()
         {
             _textToButtoImage = new Dictionary<string, Sprite>();
@@ -47,16 +49,14 @@ namespace QuizGame {
             int ButtonNum = int.Parse(num);
 
             string[] ButtonText = {ButtonText1,ButtonText2,ButtonText3,ButtonText4};
-            string link;
+           
             Vector2 position_2 = new Vector2(-3, 0);
             Vector2 position_3 = new Vector2(-4, 0);
             Vector2 position_4 = new Vector2(-4, 2);
             Quaternion rotation = Quaternion.identity;
             Transform parent = parentObject.transform;
-
-
-           
-
+            
+            Destroy(NextButton);
             for (int i = 0; i < ButtonNum; i++)
             {
                 if (ButtonNum == 3)
@@ -82,7 +82,11 @@ namespace QuizGame {
                 }
                 int n = i;
                 ListButton.GetComponent<Image>().sprite = image;//生成されたオブジェクト[item]のspriteをimageに
-                ListButton.GetComponent<Button>().onClick.AddListener(() => MyOnClick(n, ButtonNum, ButtonText[n],answer));
+                if (PushFlag == true)
+                {
+                    ListButton.GetComponent<Button>().onClick.AddListener(() => MyOnClick(n, ButtonNum, ButtonText[n], answer));
+                    ListButton.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.mainTextController.OnClick());
+                }
                 
                 _ButtonPrehabObject.Add(i, ListButton);
             }
@@ -95,12 +99,13 @@ namespace QuizGame {
         // 画像を削除する
         public void RemoveButton(int num)
         {
-            _ButtonPrehabObject = new Dictionary<int, GameObject>();
+           // _ButtonPrehabObject = new Dictionary<int, GameObject>();
 
             for (int i = 0; i <num; i++)
             {
+                
+                Destroy(_ButtonPrehabObject[i]);
                 _ButtonPrehabObject.Remove(i);
-                //GameObject.Destroy(_ButtonPrehabObject[i]);
             }
         }
         // button_1(Clone)
@@ -109,17 +114,27 @@ namespace QuizGame {
         {
 
             Quaternion rotation = Quaternion.identity;
-              Transform parent = _NextButtonPanel.transform;
+            Transform parent = _NextButtonPanel.transform;
          
             Vector2 position = new Vector2(7, -3.7f);
             NextButton = Instantiate(_NextButton, position, rotation, parent) as GameObject;
-           
-            NextButton.GetComponent<Button>().onClick.AddListener(() => RemoveButton(4));
-            NextButton.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.mainTextController.OnClick());
+            // PushFlag = false;
+            // NextButton.GetComponent<Button>().onClick.AddListener(() => RemoveButton(4));
+            //  NextButton.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.mainTextController.OnClick());
+            NextButton.GetComponent<Button>().onClick.AddListener(() => ClickNextButton());
 
         }
 
-      
+        public void ClickNextButton()
+        {
+            RemoveButton(4);
+            GameManager.Instance.mainTextController.OnClick();
+            Destroy(NextButton);
+
+
+        }
+
+
 
         public void ChangeScene()//ボタンクリックで次の行へ移動
         {
@@ -132,22 +147,23 @@ namespace QuizGame {
         public void MyOnClick(int index,int num,string ButtonText,string answer)
         {
            
-            
-            if(ButtonText == answer)
+
+            if (ButtonText == answer)
             {
                 print("good");
-                PutNextButton();
+                
             }
             else
             {
                 print("bad");
             }
+            PutNextButton();
 
-
-            if(index == 2)
+            for (int i = 0; i < num; i++)
             {
-             //  ChangeScene();
+               _ButtonPrehabObject[i].GetComponent<Button>().interactable = false;
             }
+
         }
 
 

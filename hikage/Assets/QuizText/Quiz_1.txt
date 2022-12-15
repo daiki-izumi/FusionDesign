@@ -4,6 +4,8 @@ Question1
 kaisetu
 &button 4 1A. 2B. 3C. 4D. 2B.
 Question2
+kaisetu
 &button 4 A B C D1 C 
 Question3
+kaisetu
 ゲームシーンに遷移

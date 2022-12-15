@@ -92,9 +92,6 @@ namespace QuizGame
                 case "&button":
                     GameManager.Instance.buttonManager.PutButton(words[1] ,words[2],words[3], words[4], words[5], words[6]);
                     break;
-               // case "&rmbutton":
-                 //   GameManager.Instance.buttonManager.RemoveButton(words[1]);
-                    break;
                 case "&chara":
                     GameManager.Instance.characterManager.PutChara(words[1]);
                     break;
