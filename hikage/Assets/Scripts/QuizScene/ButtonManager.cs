@@ -11,17 +11,19 @@ namespace QuizGame {
         [SerializeField] Sprite _ImageButton;
         [SerializeField] GameObject _ButtonObject;
         [SerializeField] GameObject _ButtonPrefab;
+        [SerializeField] GameObject _NextButton;
+        [SerializeField] GameObject _NextButtonPanel;
 
         // テキストファイルから、文字列でSpriteやGameObjectを扱えるようにするための辞書
         Dictionary<string, Sprite> _textToButtoImage;
         Dictionary<string, GameObject> _ButtonPanelObject;
 
         // 操作したいPrefabを指定できるようにするための辞書
-        Dictionary<string, GameObject> _ButtonPrehabObject;
+        Dictionary<int, GameObject> _ButtonPrehabObject;
 
 
         GameObject ListButton;
-
+        GameObject NextButton;
         void Awake()
         {
             _textToButtoImage = new Dictionary<string, Sprite>();
@@ -30,13 +32,14 @@ namespace QuizGame {
 
             _ButtonPanelObject.Add("ButtonPanelObject", _ButtonObject);
           
-            _ButtonPrehabObject = new Dictionary<string, GameObject>();
+            _ButtonPrehabObject = new Dictionary<int, GameObject>();
+            
         }
 
 
         
         // ボタン(選択肢)を配置する
-        public void PutButton(string num,string ButtonText1,string ButtonText2,string ButtonText3, string ButtonText4)
+        public void PutButton(string num,string ButtonText1,string ButtonText2,string ButtonText3, string ButtonText4, string answer)
         {
 
             Sprite image = _ImageButton;//入力された文字列で画像を読みだす
@@ -79,9 +82,9 @@ namespace QuizGame {
                 }
                 int n = i;
                 ListButton.GetComponent<Image>().sprite = image;//生成されたオブジェクト[item]のspriteをimageに
-                ListButton.GetComponent<Button>().onClick.AddListener(() => MyOnClick(n));
+                ListButton.GetComponent<Button>().onClick.AddListener(() => MyOnClick(n, ButtonNum, ButtonText[n],answer));
                 
-                _ButtonPrehabObject.Add(ButtonText[i], ListButton);
+                _ButtonPrehabObject.Add(i, ListButton);
             }
 
         
@@ -90,31 +93,64 @@ namespace QuizGame {
 
 
         // 画像を削除する
-        public void RemoveButton(string num, string ButtonText1, string ButtonText2, string ButtonText3, string ButtonText4)
+        public void RemoveButton(int num)
         {
-            int ButtonNum = int.Parse(num);
-            string[] ButtonText = { ButtonText1, ButtonText2, ButtonText3, ButtonText4 };
-            for (int i = 0; i < ButtonNum; i++)
+            _ButtonPrehabObject = new Dictionary<int, GameObject>();
+
+            for (int i = 0; i <num; i++)
             {
-                GameObject.Destroy(_ButtonPrehabObject[ButtonText[i]]);
+                _ButtonPrehabObject.Remove(i);
+                //GameObject.Destroy(_ButtonPrehabObject[i]);
             }
         }
         // button_1(Clone)
+
+        public void PutNextButton()
+        {
+
+            Quaternion rotation = Quaternion.identity;
+              Transform parent = _NextButtonPanel.transform;
+         
+            Vector2 position = new Vector2(7, -3.7f);
+            NextButton = Instantiate(_NextButton, position, rotation, parent) as GameObject;
+           
+            NextButton.GetComponent<Button>().onClick.AddListener(() => RemoveButton(4));
+            NextButton.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.mainTextController.OnClick());
+
+        }
+
+      
 
         public void ChangeScene()//ボタンクリックで次の行へ移動
         {
             SceneManager.LoadScene("QuizScene");
         }
 
-        void MyOnClick(int index)
-        {
+        
 
-            print(index);
+
+        public void MyOnClick(int index,int num,string ButtonText,string answer)
+        {
+           
+            
+            if(ButtonText == answer)
+            {
+                print("good");
+                PutNextButton();
+            }
+            else
+            {
+                print("bad");
+            }
+
 
             if(index == 2)
             {
-               ChangeScene();
+             //  ChangeScene();
             }
         }
+
+
+
     }
 }

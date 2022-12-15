@@ -11,7 +11,7 @@ namespace QuizGame
         [SerializeField] TextAsset _textFile_2;
         // 文章中の文（ここでは１行ごと）を入れておくためのリスト
         List<string> _sentences = new List<string>();
-       
+        List<string> _question = new List<string>();
         public static int StoryFlag;
       
 
@@ -90,10 +90,10 @@ namespace QuizGame
                     GameManager.Instance.imageManager.RemoveImage(words[1]);
                     break;
                 case "&button":
-                    GameManager.Instance.buttonManager.PutButton(words[1] ,words[2],words[3], words[4],words[5]);
+                    GameManager.Instance.buttonManager.PutButton(words[1] ,words[2],words[3], words[4], words[5], words[6]);
                     break;
-                case "&rmbutton":
-                    GameManager.Instance.buttonManager.RemoveButton(words[1], words[2], words[3], words[4],words[5]);
+               // case "&rmbutton":
+                 //   GameManager.Instance.buttonManager.RemoveButton(words[1]);
                     break;
                 case "&chara":
                     GameManager.Instance.characterManager.PutChara(words[1]);
