@@ -24,7 +24,7 @@ namespace QuizGame {
 
         GameObject ListButton;
         GameObject NextButton;
-        bool PushFlag = true;
+        
 
         void Awake()
         {
@@ -82,11 +82,10 @@ namespace QuizGame {
                 }
                 int n = i;
                 ListButton.GetComponent<Image>().sprite = image;//生成されたオブジェクト[item]のspriteをimageに
-                if (PushFlag == true)
-                {
+               
                     ListButton.GetComponent<Button>().onClick.AddListener(() => MyOnClick(n, ButtonNum, ButtonText[n], answer));
                     ListButton.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.mainTextController.OnClick());
-                }
+               
                 
                 _ButtonPrehabObject.Add(i, ListButton);
             }
@@ -118,9 +117,7 @@ namespace QuizGame {
          
             Vector2 position = new Vector2(7, -3.7f);
             NextButton = Instantiate(_NextButton, position, rotation, parent) as GameObject;
-            // PushFlag = false;
-            // NextButton.GetComponent<Button>().onClick.AddListener(() => RemoveButton(4));
-            //  NextButton.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.mainTextController.OnClick());
+            
             NextButton.GetComponent<Button>().onClick.AddListener(() => ClickNextButton());
 
         }
@@ -136,7 +133,7 @@ namespace QuizGame {
 
 
 
-        public void ChangeScene()//ボタンクリックで次の行へ移動
+        public void ChangeScene()
         {
             SceneManager.LoadScene("QuizScene");
         }
