@@ -383,7 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 516781425}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: CharacterPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -970,7 +970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Character1: {fileID: 21300000, guid: 9a29a83ee1c610c44bff9bc88601b1b5, type: 3}
   _Character2: {fileID: 21300000, guid: 5983018ee30e5c24eafea16db4547f4a, type: 3}
-  _CharacterObject: {fileID: 516781424}
+  _CharacterPanel: {fileID: 0}
   _CharacterPrefab: {fileID: 3158619093793503444, guid: b39be84ad2dbc1747b1aafb9a269dffe,
     type: 3}
 --- !u!4 &2001634152
