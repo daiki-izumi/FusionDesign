@@ -154,8 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ImageButton: {fileID: 21300000, guid: 36d3cea98a053ed40b29b06c0d4d057d, type: 3}
   _ButtonObject: {fileID: 2100461818}
-  _ButtonPrefab: {fileID: 1267653461182793324, guid: b0c8411dd9761b7499320fb037c225e7, type: 3}
-  _NextButton: {fileID: 4445466683570860289, guid: f2ec8ab186e58dc4687d04178c12740e, type: 3}
+  _ButtonPrefab: {fileID: 1267653461182793324, guid: b0c8411dd9761b7499320fb037c225e7,
+    type: 3}
+  _NextButton: {fileID: 4445466683570860289, guid: f2ec8ab186e58dc4687d04178c12740e,
+    type: 3}
   _NextButtonPanel: {fileID: 1400882123}
 --- !u!4 &177726946
 Transform:
@@ -201,12 +203,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b608a2b97113448b93923803105411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _background1: {fileID: 21300000, guid: f626e064af699774a8c56821f678b9bf, type: 3}
-  _eventCG1: {fileID: 21300000, guid: 432f5efdb002aae4e93943d8eb0449d7, type: 3}
-  _eventCG2: {fileID: 21300000, guid: ed572bb43f744674a9d2d6b719f34ae2, type: 3}
+  _Scene1: {fileID: 21300000, guid: 432f5efdb002aae4e93943d8eb0449d7, type: 3}
+  _Scene2: {fileID: 21300000, guid: f626e064af699774a8c56821f678b9bf, type: 3}
+  _Scene3: {fileID: 21300000, guid: ed572bb43f744674a9d2d6b719f34ae2, type: 3}
   _backgroundObject: {fileID: 1851807224}
-  _eventObject: {fileID: 2087453118}
-  _imagePrefab: {fileID: 5261658189402859812, guid: 407c439d68d7d054fa38763b19acd6fd, type: 3}
+  _imagePrefab: {fileID: 5261658189402859812, guid: 407c439d68d7d054fa38763b19acd6fd,
+    type: 3}
 --- !u!4 &260464975
 Transform:
   m_ObjectHideFlags: 0
@@ -276,8 +278,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -966,11 +968,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b335a3be536e7c4b9c1bd2ed2b46bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _NameBox: {fileID: 21300000, guid: ec676cd51436e734fa34adf221fdcd19, type: 3}
   _Character1: {fileID: 21300000, guid: 9a29a83ee1c610c44bff9bc88601b1b5, type: 3}
   _Character2: {fileID: 21300000, guid: 5983018ee30e5c24eafea16db4547f4a, type: 3}
   _CharacterObject: {fileID: 516781424}
-  _CharacterPrefab: {fileID: 3158619093793503444, guid: b39be84ad2dbc1747b1aafb9a269dffe, type: 3}
+  _CharacterPrefab: {fileID: 3158619093793503444, guid: b39be84ad2dbc1747b1aafb9a269dffe,
+    type: 3}
 --- !u!4 &2001634152
 Transform:
   m_ObjectHideFlags: 0

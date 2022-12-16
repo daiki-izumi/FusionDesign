@@ -53,11 +53,11 @@ namespace QuizGame
 
         }
 
-        // その行の、すべての文字が表示されていなければ、まだ次の行へ進むことはできない
         public bool CanGoToTheNextLine()
         {
             string sentence = GameManager.Instance.userScriptManager.GetCurrentSentence();
-            return (_displayedSentenceLength > sentence.Length);
+             return (_displayedSentenceLength > sentence.Length);
+            //return false;
         }
 
         // 次の行へ移動
@@ -85,11 +85,10 @@ namespace QuizGame
         public void OnClick()//ボタンクリックで次の行へ移動
         {
 
-            if (CanGoToTheNextLine())
-            {
+            
                 GoToTheNextLine();
                 DisplayText();
-            }
+          
         }
 
     }
