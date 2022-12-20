@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartSceneManager : MonoBehaviour
+namespace StartScene
 {
-    // Start is called before the first frame update
-    void Start()
+    public class StartSceneManager : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public static StartSceneManager Instance { get; private set; }
+
+        public ButtonManager buttonManager;
+        public ImageManager imageManager;
+        public StartController startController;
+
+        [System.NonSerialized] public int SceneNumber;
+
+        void Awake()
+        {
+            Instance = this;
+
+            SceneNumber = 0;
+
+        }
+
     }
 }
