@@ -9,10 +9,13 @@ namespace StartScene
     {
 
         [SerializeField] Sprite _JPLIFE;
+        [SerializeField] Sprite _CharaWindow;
         [SerializeField] GameObject _ImagePanel;
-        [SerializeField] GameObject _ImagePrehab;
+        [SerializeField] GameObject _WindowPrefab;
+        [SerializeField] GameObject _ImagePrefab;
 
         GameObject Title;
+        public GameObject CharaWindow;
         // Start is called before the first frame update
         void Start()
         {
@@ -22,14 +25,31 @@ namespace StartScene
             Transform parent = parentObject.transform;
 
 
-            Title = Instantiate(_ImagePrehab, position, rotation, parent) as GameObject;
+            Title = Instantiate(_ImagePrefab, position, rotation, parent) as GameObject;
             Title.GetComponent<Image>().sprite = _JPLIFE;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void PutCharaWindow()
         {
+            //var windowtext;
+            GameObject parentObject = _ImagePanel;//âÊëúÇîzíuÇ∑ÇÈpanelÇåƒÇ—èoÇ∑
+            Vector2 position = new Vector2(0.0f, -3.0f);
+            Quaternion rotation = Quaternion.identity;
+            Transform parent = parentObject.transform;
 
+
+            Debug.Log(StartSceneManager.Instance.startController.GetCurrentSceneNumber());
+
+            CharaWindow = Instantiate(_WindowPrefab, position, rotation, parent) as GameObject;
+            CharaWindow.GetComponent<Image>().sprite = _CharaWindow;
+            CharaWindow.GetComponent<Image>().sprite = _CharaWindow;
+            var windowtext = CharaWindow.GetComponentInChildren<Text>();
+            windowtext.text = StartSceneManager.Instance.startController.GetCurrentSentences(); ;
+            windowtext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            //CharaWindow.GetComponentInChildren<Text>().text = StartSceneManager.Instance.startController.GetCurrentSentences();
         }
+
+
+
     }
 }

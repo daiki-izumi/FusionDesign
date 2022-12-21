@@ -419,9 +419,9 @@ MonoBehaviour:
   _NextButton: {fileID: 6662296812053179059, guid: fa7389572fc07a94482bc02fc60d417e,
     type: 3}
   _ButtonPanel: {fileID: 1128160798}
-  _CharaButton_male: {fileID: 5674378820660348372, guid: 08f98588c52b8934eb926506d320734c,
+  _CharaButton_male: {fileID: 7397927413233554978, guid: 1bbba28e9fc27214c935495b3c9f342b,
     type: 3}
-  _CharaButton_female: {fileID: 7123158413497728749, guid: 7713e50f40085f54dbcf640e18142a7d,
+  _CharaButton_female: {fileID: 7104573203666090554, guid: 38b4cbcf570d6854e9b01fb813f043b3,
     type: 3}
   Chara_male: {fileID: 21300000, guid: 1f17689fcd1cd864abb0be0e209e8007, type: 3}
   Chara_female: {fileID: 21300000, guid: bed738c9d41cc63459947bc98a41c863, type: 3}
@@ -492,8 +492,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _JPLIFE: {fileID: 21300000, guid: 5c74d3f7ca9855447bd9e07feb5c7f9f, type: 3}
+  _CharaWindow: {fileID: 21300000, guid: fa98d3d47deb3074bb69e4cd47ba7772, type: 3}
   _ImagePanel: {fileID: 778861471}
-  _ImagePrehab: {fileID: 3323971582145685386, guid: 7c3c47fe22976af428b991edf1ae5a8a,
+  _WindowPrefab: {fileID: 8247906310317091334, guid: b9172bf128bd34848ae51825422bd1d6,
+    type: 3}
+  _ImagePrefab: {fileID: 3323971582145685386, guid: 7c3c47fe22976af428b991edf1ae5a8a,
     type: 3}
 --- !u!4 &1017564619
 Transform:

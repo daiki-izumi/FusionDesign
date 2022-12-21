@@ -31,13 +31,12 @@ namespace StartScene
                 _sentences.Add(line);
             }
 
-            _mainTextObject.text = _sentences[GetCurrentSceneNumber()];
+            _mainTextObject.text = GetCurrentSentences();
 
 
             StartSceneManager.Instance.buttonManager.PutStartButton();
 
-           // _textpanel.GetComponent<Image>().color = new Color(0.0f,0.0f,0.0f,0.0f);
-
+         
         }
 
         // Update is called once per frame
@@ -51,6 +50,10 @@ namespace StartScene
 
         }
 
+        public string GetCurrentSentences()
+        {
+            return _sentences[GetCurrentSceneNumber()];
+        }
 
         public int GetCurrentSceneNumber()
         {
