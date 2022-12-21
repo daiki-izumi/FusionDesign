@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace StartScene
-{
+
     public class ButtonManager : MonoBehaviour
     {
         [SerializeField] GameObject _StartButton;
@@ -121,4 +120,3 @@ namespace StartScene
 
         }
     }
-}

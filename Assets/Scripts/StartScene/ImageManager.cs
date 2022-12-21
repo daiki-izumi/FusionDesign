@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace StartScene
-{
+
     public class ImageManager : MonoBehaviour
     {
 
@@ -52,4 +51,3 @@ namespace StartScene
 
 
     }
-}

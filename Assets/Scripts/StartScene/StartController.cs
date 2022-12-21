@@ -6,16 +6,17 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-namespace StartScene
-{
-    public class StartController : MonoBehaviour
+//https://kurokumasoft.com/2022/07/10/unity-sound-manager/
+
+public class StartController : MonoBehaviour
     {
         // Start is called before the first frame update
         public TextMeshProUGUI _mainTextObject;
         public GameObject _textpanel;
         [SerializeField] TextAsset _textFile;
-       
-        List<string> _sentences = new List<string>();
+        [SerializeField] private SoundManager soundManager;
+         [SerializeField]  AudioClip clip;
+    List<string> _sentences = new List<string>();
         string sentence;
         float _time;
         float _feedTime;
@@ -31,7 +32,9 @@ namespace StartScene
                 _sentences.Add(line);
             }
 
-            _mainTextObject.text = GetCurrentSentences();
+        soundManager.PlayBgm(clip);
+
+        _mainTextObject.text = GetCurrentSentences();
 
 
             StartSceneManager.Instance.buttonManager.PutStartButton();
@@ -61,4 +64,3 @@ namespace StartScene
 
         }
     }
-}
