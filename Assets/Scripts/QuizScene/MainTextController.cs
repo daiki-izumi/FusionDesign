@@ -84,8 +84,6 @@ namespace QuizGame
 
         public void OnClick()//ボタンクリックで次の行へ移動
         {
-
-            
                 GoToTheNextLine();
                 DisplayText();
           
