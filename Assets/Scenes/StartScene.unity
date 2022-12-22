@@ -155,6 +155,8 @@ MonoBehaviour:
   _mainTextObject: {fileID: 1649836943}
   _textpanel: {fileID: 1125863186}
   _textFile: {fileID: 4900000, guid: a11739f27437c0b49b136f5269609a46, type: 3}
+  soundManager: {fileID: 232355485}
+  clip: {fileID: 8300000, guid: 843372ad28358a74383695937ef6e040, type: 3}
 --- !u!4 &222860077
 Transform:
   m_ObjectHideFlags: 0
@@ -201,11 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200d7b9f821787b489afa4156745602e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SE2: {fileID: 8300000, guid: 85ff98453feffd541813c1dd8c07333a, type: 3}
-  SE3: {fileID: 8300000, guid: e338c95a6910fa446a6152c97d00434a, type: 3}
-  SE4: {fileID: 8300000, guid: 59e353b8a87a3e44f99b49cc49f25253, type: 3}
-  SE5: {fileID: 8300000, guid: b9f76cb85a41888428a25d9d9ca1ba9b, type: 3}
-  BGM1: {fileID: 8300000, guid: 843372ad28358a74383695937ef6e040, type: 3}
+  bgmAudioSource: {fileID: 232355488}
+  seAudioSource: {fileID: 232355487}
 --- !u!4 &232355486
 Transform:
   m_ObjectHideFlags: 0
@@ -657,7 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c8bf14443dc35478f29e2ea4abe25f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _StartButton: {fileID: 2682401900169759525, guid: c050e4fdf4062424bbf3405d10e14446,
+  _StartButton: {fileID: 4924726689628774267, guid: c090e55a650ac4c45abf22d5542c29ca,
     type: 3}
   _NextButton: {fileID: 6662296812053179059, guid: fa7389572fc07a94482bc02fc60d417e,
     type: 3}
@@ -674,6 +673,7 @@ MonoBehaviour:
     type: 3}
   Chara_male: {fileID: 21300000, guid: 1f17689fcd1cd864abb0be0e209e8007, type: 3}
   Chara_female: {fileID: 21300000, guid: bed738c9d41cc63459947bc98a41c863, type: 3}
+  userInformation: {fileID: 909480309}
 --- !u!1 &909480308
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cd2989fb61acb4fa40d1f22cce55fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  gender: 0
 --- !u!4 &909480310
 Transform:
   m_ObjectHideFlags: 0
@@ -818,6 +820,7 @@ GameObject:
   - component: {fileID: 1125863187}
   - component: {fileID: 1125863189}
   - component: {fileID: 1125863188}
+  - component: {fileID: 1125863191}
   m_Layer: 5
   m_Name: TextPanel
   m_TagString: Untagged
@@ -884,6 +887,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125863186}
   m_CullTransparentMesh: 1
+--- !u!114 &1125863191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125863186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03aa5edc9935e748b02c2b28ef87443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeOut: 0
+  isFadeIn: 0
+  FadeOutflag: 0
+  FadeInflag: 0
 --- !u!1 &1128160798
 GameObject:
   m_ObjectHideFlags: 0

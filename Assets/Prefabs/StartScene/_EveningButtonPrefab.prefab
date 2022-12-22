@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 502851555574994529}
   - component: {fileID: 7863038388564676899}
   - component: {fileID: 4639177803409920530}
+  - component: {fileID: 8676471500391251652}
   m_Layer: 5
   m_Name: _EveningButtonPrefab
   m_TagString: Untagged
@@ -122,6 +123,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8676471500391251652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675012473762462383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03aa5edc9935e748b02c2b28ef87443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeOut: 0
+  isFadeIn: 1
+  FadeOutflag: 0
+  FadeInflag: 1
 --- !u!1 &7734082438529457664
 GameObject:
   m_ObjectHideFlags: 0

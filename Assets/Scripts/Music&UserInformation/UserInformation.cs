@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class UserInformation : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int score;
+    public bool gender;//male true;female false;
+
     void Start()
     {
-        
+        DontDestroyOnLoad(this);
     }
+  
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    
 }

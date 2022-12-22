@@ -17,7 +17,7 @@ using UnityEngine.SceneManagement;
         [SerializeField] GameObject _EveningButton;
         [SerializeField] Sprite Chara_male;
         [SerializeField] Sprite Chara_female;
-
+        [SerializeField] UserInformation userInformation;
         GameObject StartButton;
         GameObject NextButton;
         GameObject CharaButton_male;
@@ -25,8 +25,7 @@ using UnityEngine.SceneManagement;
         GameObject MorningButton;
         GameObject MiddayButton;
         GameObject EveningButton;
-        // Start is called before the first frame update
-
+   
 
 
 
@@ -36,7 +35,7 @@ using UnityEngine.SceneManagement;
             Vector2 position = new Vector2(0, 0);
             Quaternion rotation = Quaternion.identity;
             Transform parent = parentObject.transform;
-            StartButton = Instantiate(_StartButton, position, rotation, parent) as GameObject;
+            StartButton = Instantiate(_StartButton, position, rotation, parent) as GameObject; 
             StartButton.GetComponent<Button>().onClick.AddListener(() => ClickStart());
         }
    
@@ -61,7 +60,6 @@ using UnityEngine.SceneManagement;
             Transform parent = parentObject.transform;
             CharaButton_male = Instantiate(_CharaButton_male, position_male, rotation, parent) as GameObject;
             CharaButton_male.GetComponent<Image>().sprite = Chara_male;
-            //NextButton.GetComponent<Button>().onClick.AddListener(() => ClickNext());
             CharaButton_female = Instantiate(_CharaButton_female, position_female, rotation, parent) as GameObject;
             CharaButton_female.GetComponent<Image>().sprite = Chara_female;
 
@@ -81,16 +79,21 @@ using UnityEngine.SceneManagement;
             MorningButton = Instantiate(_MorningButton, position_morning, rotation, parent) as GameObject;
             MiddayButton = Instantiate(_MiddayButton, position_midday, rotation, parent) as GameObject;
             EveningButton = Instantiate(_EveningButton, position_evening, rotation, parent) as GameObject;
-           
 
-        }
+            MorningButton.GetComponent<Button>().onClick.AddListener(() => ClickMorning());
+            MiddayButton.GetComponent<Button>().onClick.AddListener(() => ClickMidday());
+            EveningButton.GetComponent<Button>().onClick.AddListener(() => ClickEvening());
+
+    }
 
         public void ClickMale()
         {
             Destroy(CharaButton_female);
             Destroy(CharaButton_male);
             Destroy(StartSceneManager.Instance.imageManager.CharaWindow);
+            userInformation.gender = true;
             PutSelectButton();
+
         }
 
         public void ClickFemale()
@@ -98,6 +101,7 @@ using UnityEngine.SceneManagement;
             Destroy(CharaButton_female);
             Destroy(CharaButton_male);
             Destroy(StartSceneManager.Instance.imageManager.CharaWindow);
+            userInformation.gender = false;
             PutSelectButton();
         }
 
@@ -119,4 +123,20 @@ using UnityEngine.SceneManagement;
             Destroy(NextButton);
 
         }
+
+        public void ClickMorning()
+       {
+        SceneManager.LoadScene("SampleScene");
     }
+        public void ClickMidday()
+         {
+        SceneManager.LoadScene("SampleScene");
+    }
+       public void ClickEvening()
+        {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+
+
+}

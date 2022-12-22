@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 7104573203666090558}
   - component: {fileID: 7104573203666090559}
   - component: {fileID: 7104573203666090552}
+  - component: {fileID: -8955221151944265411}
   m_Layer: 5
   m_Name: _FemaleButton
   m_TagString: Untagged
@@ -202,3 +203,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-8955221151944265411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104573203666090554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03aa5edc9935e748b02c2b28ef87443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeOut: 0
+  isFadeIn: 1
+  FadeOutflag: 0
+  FadeInflag: 1

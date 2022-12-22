@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-//https://kurokumasoft.com/2022/07/10/unity-sound-manager/
+
 
 public class StartController : MonoBehaviour
     {
@@ -15,27 +15,29 @@ public class StartController : MonoBehaviour
         public GameObject _textpanel;
         [SerializeField] TextAsset _textFile;
         [SerializeField] private SoundManager soundManager;
-         [SerializeField]  AudioClip clip;
-    List<string> _sentences = new List<string>();
+        [SerializeField]  AudioClip clip;
+        List<string> _sentences = new List<string>();
         string sentence;
         float _time;
         float _feedTime;
         bool flag = true;
+
+
         void Start()
         {
             _time = 0f;
             _feedTime = 0.05f;
             StringReader reader = new StringReader(_textFile.text);
+
             while (reader.Peek() != -1)//テキストファイルを全て読み込んだら終了
             {
                 string line = reader.ReadLine();//ReadLine
                 _sentences.Add(line);
             }
 
-        soundManager.PlayBgm(clip);
+            soundManager.PlayBgm(clip);
 
-        _mainTextObject.text = GetCurrentSentences();
-
+            _mainTextObject.text = GetCurrentSentences();
 
             StartSceneManager.Instance.buttonManager.PutStartButton();
 
