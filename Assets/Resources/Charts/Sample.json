@@ -3,14 +3,12 @@
   "bpm": "120",
   "notes": [
     {"timing": "5000", "type": "1"},
-    {"timing": "5250", "type": "2"},
-    {"timing": "5500", "type": "2"},
-    {"timing": "6000", "type": "1"},
-    {"timing": "6250", "type": "1"},
-    {"timing": "6500", "type": "1"},
-    {"timing": "7000", "type": "1"},
+    {"timing": "6000", "type": "2"},
+    {"timing": "6500", "type": "4"},
     {"timing": "7250", "type": "1"},
-    {"timing": "7500", "type": "1"},
-    {"timing": "7750", "type": "2"}
+    {"timing": "7500", "type": "3"},
+    {"timing": "7750", "type": "2"},
+    {"timing": "8500", "type": "1"},
+    {"timing": "9500", "type": "4"},
   ]
 }
