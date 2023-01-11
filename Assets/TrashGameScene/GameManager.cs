@@ -6,22 +6,41 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 using System.Diagnostics;
+using Random = System.Random;
 
 public class GameManager : MonoBehaviour
 {
 
     [SerializeField] string FilePath;
 
+    [SerializeField] EffectManager effectManager;
 
     [SerializeField] GameObject _1;
     [SerializeField] GameObject _2;
     [SerializeField] GameObject _3;
     [SerializeField] GameObject _4;
+   
+    [SerializeField] Sprite BW_1;
+    [SerializeField] Sprite BW_2;
+    [SerializeField] Sprite BW_3;
 
-    [SerializeField] Button button_1;
-    [SerializeField] Button button_2;
-    [SerializeField] Button button_3;
-    [SerializeField] Button button_4;
+    [SerializeField] Sprite NBW_1;
+    [SerializeField] Sprite NBW_2;
+    [SerializeField] Sprite NBW_3;
+
+    [SerializeField] Sprite GCP_1;
+    [SerializeField] Sprite GCP_2;
+    [SerializeField] Sprite GCP_3;
+    [SerializeField] Sprite GCP_4;
+
+    [SerializeField] Sprite OW_1;
+    [SerializeField] Sprite OW_2;
+
+    List<Sprite> BW;
+    List<Sprite> NBW;
+    List<Sprite> GCP;
+    List<Sprite> OW;
+
 
 
     [SerializeField] Transform SpawnPoint;
@@ -66,6 +85,26 @@ public class GameManager : MonoBehaviour
         CheckRange = 220; // ’Ç‰Á
         BeatRange = 120; // ’Ç‰Á
 
+        BW = new List<Sprite>();
+        BW.Add(BW_1);
+        BW.Add(BW_2);
+        BW.Add(BW_3);
+
+        NBW = new List<Sprite>();
+        NBW.Add(NBW_1);
+        NBW.Add(NBW_2);
+        NBW.Add(NBW_3);
+
+        GCP = new List<Sprite>();
+        GCP.Add(GCP_1);
+        GCP.Add(GCP_2);
+        GCP.Add(GCP_3);
+        GCP.Add(GCP_4);
+
+        OW = new List<Sprite>();
+        OW.Add(OW_1);
+        OW.Add(OW_2);
+      
 
         Play.onClick
           .AsObservable()
@@ -85,37 +124,65 @@ public class GameManager : MonoBehaviour
               GoIndex++;
           });
 
-      
+    
+
+               this.UpdateAsObservable()
+                   .Where(_ => isPlaying)
+                   .Where(_ => Input.GetKeyDown(KeyCode.V))
+                   .Subscribe(_ => {
+                       beat("1", Time.time * 1000 - PlayTime);
+                   });
+
+               // ’Ç‰Á
+               this.UpdateAsObservable()
+                 .Where(_ => isPlaying)
+                 .Where(_ => Input.GetKeyDown(KeyCode.B))
+                 .Subscribe(_ => {
+                     beat("2", Time.time * 1000 - PlayTime);
+                 });
+               this.UpdateAsObservable()
+                   .Where(_ => isPlaying)
+                   .Where(_ => Input.GetKeyDown(KeyCode.N))
+                   .Subscribe(_ => {
+                       beat("3", Time.time * 1000 - PlayTime);
+                   });
+
         // ’Ç‰Á
-           button_1.onClick
-          .AsObservable()
+        
+        this.UpdateAsObservable()
           .Where(_ => isPlaying)
+          .Where(_ => Input.GetKeyDown(KeyCode.M))
           .Subscribe(_ => {
-              beat("1", Time.time * 1000 - PlayTime);
+              beat("4", Time.time * 1000 - PlayTime);
+
           });
-        // ’Ç‰Á
-           button_2.onClick
-           .AsObservable()
-           .Where(_ => isPlaying)
-           .Subscribe(_ => {
-           beat("2", Time.time * 1000 - PlayTime);
-       });
-        // ’Ç‰Á
-           button_3.onClick
-           .AsObservable()
-           .Where(_ => isPlaying)
-           .Subscribe(_ => {
-              beat("3", Time.time * 1000 - PlayTime);
-           });
-        // ’Ç‰Á
-            button_4.onClick
-           .AsObservable()
-           .Where(_ => isPlaying)
-           .Subscribe(_ => {
-           beat("4", Time.time * 1000 - PlayTime);
-       });
+        
+        this.UpdateAsObservable()
+                .Where(_ => Input.GetKeyDown(KeyCode.V))
+                .Subscribe(_ => {    
+                    effectManager.setboolBW();
+                });
+        this.UpdateAsObservable()
+              .Where(_ => Input.GetKeyDown(KeyCode.B))
+              .Subscribe(_ => {
+                  effectManager.setboolNBW();
+              });
+        this.UpdateAsObservable()
+              .Where(_ => Input.GetKeyDown(KeyCode.N))
+              .Subscribe(_ => {
+                  effectManager.setboolGCP();
+              });
+        this.UpdateAsObservable()
+              .Where(_ => Input.GetKeyDown(KeyCode.M))
+              .Subscribe(_ => {
+                  effectManager.setboolOW();
+              });
+
+
+
     }
 
+    public Image image;
 
     void loadChart()
     {
@@ -135,22 +202,30 @@ public class GameManager : MonoBehaviour
             string type = note["type"].Get<string>();
             float timing = float.Parse(note["timing"].Get<string>());
 
+            Random myObject = new Random();
+            int ranNum = myObject.Next(1, 100);
+
             GameObject Note;
             if (type == "1")
             {
-                Note = Instantiate(_1, SpawnPoint.position, Quaternion.identity);
+                Note = Instantiate(_1, SpawnPoint.position, Quaternion.identity)as GameObject;
+                Note.GetComponent<SpriteRenderer>().sprite = BW[ranNum%BW.Count];
+                
             }
             else if (type == "2")
             {
                 Note = Instantiate(_2, SpawnPoint.position, Quaternion.identity);
+                Note.GetComponent<SpriteRenderer>().sprite = NBW[ranNum % NBW.Count];
             }
             else if (type == "3")
             {
-                Note = Instantiate(_3, SpawnPoint.position, Quaternion.identity); 
+                Note = Instantiate(_3, SpawnPoint.position, Quaternion.identity);
+                Note.GetComponent<SpriteRenderer>().sprite = GCP[ranNum%GCP.Count];
             }
             else if (type == "4")
             {
                 Note = Instantiate(_4, SpawnPoint.position, Quaternion.identity);
+                Note.GetComponent<SpriteRenderer>().sprite = OW[ranNum % OW.Count];
             }
             else
             {

@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 using System.Diagnostics;
 
 using Debug = UnityEngine.Debug;
+using Random = System.Random;
 public class NoteController : MonoBehaviour
 {
     string Type;
@@ -24,10 +26,21 @@ public class NoteController : MonoBehaviour
         isGo = false;
         firstPos = this.transform.position;
 
+        Random myObject = new Random();
+        float ranNum = (float)myObject.NextDouble();
+        Quaternion rot = Quaternion.Euler(0, 0, ranNum * 0.6f);
+        Debug.Log(ranNum);
+
+
         this.UpdateAsObservable()
           .Where(_ => isGo)
           .Subscribe(_ => {
               this.gameObject.transform.position = new Vector3(firstPos.x - Distance * (Time.time * 1000 - GoTime) / During, high(firstPos.x - Distance * (Time.time * 1000 - GoTime) / During), firstPos.z);
+
+          
+              Quaternion q = this.transform.rotation;
+              this.gameObject.transform.rotation = q * rot;
+            
           });
     }
 

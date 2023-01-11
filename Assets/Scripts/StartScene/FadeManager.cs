@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; //パネルのイメージを操作するのに必要
+using UnityEngine.UI; 
 
 public class FadeManager : MonoBehaviour
 {

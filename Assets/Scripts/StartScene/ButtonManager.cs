@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
-
-    public class ButtonManager : MonoBehaviour
+public class ButtonManager : MonoBehaviour
     {
         [SerializeField] GameObject _StartButton;
         [SerializeField] GameObject _NextButton;
@@ -18,6 +18,7 @@ using UnityEngine.SceneManagement;
         [SerializeField] Sprite Chara_male;
         [SerializeField] Sprite Chara_female;
         [SerializeField] UserInformation userInformation;
+
         GameObject StartButton;
         GameObject NextButton;
         GameObject CharaButton_male;
@@ -25,11 +26,12 @@ using UnityEngine.SceneManagement;
         GameObject MorningButton;
         GameObject MiddayButton;
         GameObject EveningButton;
-   
+
+        [SerializeField] AudioClip push;
+        [SerializeField] private SoundManager soundManager;
 
 
-
-        public void PutStartButton()
+    public void PutStartButton()
         {
             GameObject parentObject = _ButtonPanel;//âÊëúÇîzíuÇ∑ÇÈpanelÇåƒÇ—èoÇ∑
             Vector2 position = new Vector2(0, 0);
@@ -88,6 +90,7 @@ using UnityEngine.SceneManagement;
 
         public void ClickMale()
         {
+            soundManager.PlaySe(push);
             Destroy(CharaButton_female);
             Destroy(CharaButton_male);
             Destroy(StartSceneManager.Instance.imageManager.CharaWindow);
@@ -98,6 +101,7 @@ using UnityEngine.SceneManagement;
 
         public void ClickFemale()
         {
+            soundManager.PlaySe(push);
             Destroy(CharaButton_female);
             Destroy(CharaButton_male);
             Destroy(StartSceneManager.Instance.imageManager.CharaWindow);
@@ -107,6 +111,7 @@ using UnityEngine.SceneManagement;
 
         public void ClickStart()
         {
+            soundManager.PlaySe(push);
             PutNextButton();
             Destroy(StartButton);
             StartSceneManager.Instance.SceneNumber++;
@@ -116,6 +121,7 @@ using UnityEngine.SceneManagement;
         public void ClickNext()
         {
             StartSceneManager.Instance.SceneNumber++;
+            soundManager.PlaySe(push);
             PutCharaButton();
             StartSceneManager.Instance.startController._textpanel.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             StartSceneManager.Instance.startController._mainTextObject.text = "  ";
