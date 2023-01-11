@@ -76,14 +76,14 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
-        // 追加した変数に値をセット
+        
         Distance = Math.Abs(BeatPoint.position.x - SpawnPoint.position.x);
         During = 2 * 1000;
         isPlaying = false;
         GoIndex = 0;
 
-        CheckRange = 220; // 追加
-        BeatRange = 120; // 追加
+        CheckRange = 220; 
+        BeatRange = 120; 
 
         BW = new List<Sprite>();
         BW.Add(BW_1);
@@ -114,7 +114,10 @@ public class GameManager : MonoBehaviour
           .AsObservable()
           .Subscribe(_ => loadChart());
 
-        // ノーツを発射するタイミングかチェックし、go関数を発火
+
+
+
+        
         this.UpdateAsObservable()
           .Where(_ => isPlaying)
           .Where(_ => Notes.Count > GoIndex)
@@ -131,31 +134,30 @@ public class GameManager : MonoBehaviour
                    .Where(_ => Input.GetKeyDown(KeyCode.V))
                    .Subscribe(_ => {
                        beat("1", Time.time * 1000 - PlayTime);
-                   });
+                     });
 
-               // 追加
+               
                this.UpdateAsObservable()
                  .Where(_ => isPlaying)
                  .Where(_ => Input.GetKeyDown(KeyCode.B))
                  .Subscribe(_ => {
                      beat("2", Time.time * 1000 - PlayTime);
-                 });
+                    });
+
                this.UpdateAsObservable()
                    .Where(_ => isPlaying)
                    .Where(_ => Input.GetKeyDown(KeyCode.N))
                    .Subscribe(_ => {
                        beat("3", Time.time * 1000 - PlayTime);
-                   });
+                     });
 
-        // 追加
-        
-        this.UpdateAsObservable()
-          .Where(_ => isPlaying)
-          .Where(_ => Input.GetKeyDown(KeyCode.M))
-          .Subscribe(_ => {
-              beat("4", Time.time * 1000 - PlayTime);
+                this.UpdateAsObservable()
+                   .Where(_ => isPlaying)
+                   .Where(_ => Input.GetKeyDown(KeyCode.M))
+                   .Subscribe(_ => {
+                      beat("4", Time.time * 1000 - PlayTime);
 
-          });
+                     });
         
         this.UpdateAsObservable()
                 .Where(_ => Input.GetKeyDown(KeyCode.V))
@@ -208,7 +210,7 @@ public class GameManager : MonoBehaviour
             GameObject Note;
             if (type == "1")
             {
-                Note = Instantiate(_1, SpawnPoint.position, Quaternion.identity)as GameObject;
+                Note = Instantiate(_1, SpawnPoint.position, Quaternion.identity);
                 Note.GetComponent<SpriteRenderer>().sprite = BW[ranNum%BW.Count];
                 
             }

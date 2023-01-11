@@ -18,6 +18,7 @@ public class EffectManager : MonoBehaviour
 
 
     Transform transform_BW, transform_NBW, transform_GCP, transform_OW;
+
     float x_BW, z_BW;
     float x_NBW, z_NBW;
     float x_GCP, z_GCP;
