@@ -8,28 +8,42 @@ using System.Text;
 namespace fileSL
 {
     
-    public class Save
+    public class fileSaveLoad
     {
-        public Save()
+        private string path = Application.persistentDataPath + "/player_data.json";
+        public string Save(string index, string chara, string line,string loc)
         {
-            string path = "./player_data.json";
             StreamWriter streamWriter = new StreamWriter(path);
             JSONObject json = new JSONObject();
-            int key = 10;
-            json.Add("Key", key);
-            streamWriter.Write(json.ToString(), false, Encoding.UTF8);
+            //番号
+            json.Add("Number", index);
+            //キャラクター
+            json.Add("Character", chara);
+            //セリフ
+            json.Add("Line", line);
+            Debug.Log($"format is{json.ToString()},{json.ToString().GetType()}");
+            streamWriter.Write(json.ToString());
+            streamWriter.Close();
+            return path;
         }
-
-    }
-
-    public class Load
-    {
-        public Load()
+        //セーブデータをロードしてstringの配列を返す
+        //第1引数が番号,第2引数がキャラクター画像,第3引数がセリフ
+        public string[] Load()
         {
-            string path = "./player_data.json";
             StreamReader streamReader = new StreamReader(path, Encoding.UTF8);
             string json = streamReader.ReadToEnd();
             var o = JSON.Parse(json);
+            //Debug.Log(o.GetType());
+            string[] dic = new string[]{ "Number", "Character", "Line" };
+            int i_count = 0;
+            string[] output = new string[dic.Length];
+            for (int i = 0; i < dic.Length; i++)
+            {
+                output[i] = o[dic[i]];
+                //Debug.Log(o[dic[i]]);
+                //Debug.Log(dic[i]);
+            }
+            return output;
         }
     }
 }

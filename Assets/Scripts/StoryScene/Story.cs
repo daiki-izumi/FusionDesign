@@ -8,6 +8,7 @@ using SimpleJSON;
 using UnityEngine.SceneManagement;
 using System;
 using UnityEditor;
+using fileSL;
 
 
 
@@ -98,7 +99,13 @@ public class Story : MonoBehaviour
         }));*/
         //speaker.text = "Oi";
         StartCoroutine(load_line(OnFinished));
-        //Instantiate(UIs, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
+        //セーブロードテスト
+        //fileSL.fileSave sv = new fileSL.fileSave();
+        //string s = sv.Save("a", "b", "c", "d");
+        //Debug.Log($"File path is {s}");
+        fileSL.fileSaveLoad ld = new fileSL.fileSaveLoad();
+        string[] l = ld.Load();
+        Debug.Log($"Load Result is {l}");
     }
 
     // Update is called once per frame
