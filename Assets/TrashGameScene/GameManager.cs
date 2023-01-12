@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         get { return MessageEffectSubject; }
     }
 
-
+    bool one = true;
 
     void OnEnable()
     {
@@ -109,10 +109,16 @@ public class GameManager : MonoBehaviour
         Play.onClick
           .AsObservable()
           .Subscribe(_ => play());
-
+        /*
         SetChart.onClick
           .AsObservable()
-          .Subscribe(_ => loadChart());
+          .Subscribe(_ => loadChart());*/
+
+        if(one = true)
+        {
+            loadChart();
+            one = false;
+        }
 
 
 
