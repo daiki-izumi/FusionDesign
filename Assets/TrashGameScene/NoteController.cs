@@ -29,7 +29,7 @@ public class NoteController : MonoBehaviour
         Random myObject = new Random();
         float ranNum = (float)myObject.NextDouble();
         Quaternion rot = Quaternion.Euler(0, 0, ranNum * 0.6f);
-        Debug.Log(ranNum);
+       // Debug.Log(ranNum);
 
 
         this.UpdateAsObservable()

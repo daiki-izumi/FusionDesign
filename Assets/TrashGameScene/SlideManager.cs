@@ -5,12 +5,14 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
-
 using Debug = UnityEngine.Debug;
 
 public class SlideManager : MonoBehaviour
 {
-    [SerializeField] Sprite _background;
+
+    [SerializeField] GameManager gameManager;
+
+
 
     [SerializeField] Sprite _0;
     [SerializeField] Sprite _1;
@@ -27,14 +29,18 @@ public class SlideManager : MonoBehaviour
     [SerializeField] GameObject backpanel;
     [SerializeField] GameObject panel;
 
-    [SerializeField] GameObject START;
+    [SerializeField] GameObject _START;
+
+    [SerializeField] DestroyObject destroyObject;
 
     List<GameObject> Slide;
 
     GameObject Next;
 
     GameObject Back;
-    
+    GameObject slide, background;
+
+    GameObject START;
     float x;
     float move_value = 0.0f;
 
@@ -48,12 +54,18 @@ public class SlideManager : MonoBehaviour
         Back_flag = false;
 
         Slide = new List<GameObject>();
-        GameObject slide, background;
+      //  GameObject slide, background;
         Transform parent = _backgroundObject.transform;
         Quaternion q = Quaternion.identity;
 
-        background = Instantiate(backpanel, new Vector3(0.0f, 0.0f, 2.0f), q, parent);
-        background.GetComponent<Image>().sprite = _background;
+        background = Instantiate(backpanel, new Vector3(0.0f, 0.0f, 2.0f), q, parent) as GameObject;
+       
+
+
+
+
+
+
 
 
 
@@ -73,8 +85,7 @@ public class SlideManager : MonoBehaviour
         slide.GetComponent<Image>().sprite = _2;
         Slide.Add(slide);
 
-        PutNext();
-        PutBack();
+      
 
         
         slide = Instantiate(panel, new Vector3(60.0f, 0.0f, 11.0f), Quaternion.identity, _backgroundObject.transform);
@@ -82,73 +93,83 @@ public class SlideManager : MonoBehaviour
         Slide.Add(slide);
 
        // START.GetComponent<Transform>().localPosition = new Vector3(START.GetComponent<Transform>().localPosition.x , START.GetComponent<Transform>().localPosition.y, START.GetComponent<Transform>().localPosition.z);
-       START.GetComponent<Transform>().localPosition = new Vector3(60.0f, 0.0f, 11.0f);
+      // START.GetComponent<Transform>().localPosition = new Vector3(60.0f, 0.0f, 11.0f);
         /*
        slide = Instantiate(panel, new Vector3(0.0f, 0.0f, 13.0f), Quaternion.identity, _backgroundObject.transform);
         slide.GetComponent<Image>().sprite = _4;
         Slide.Add(slide);
         */
+        PutNext();
+        PutBack();
+
+        START = Instantiate(_START, new Vector3(0.0f, 0.0f, 0.0f), q, parent);
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
-        Next.GetComponent<Button>().onClick.AddListener(() => OnNext());
-        Back.GetComponent<Button>().onClick.AddListener(() =>OnBack());
-
-        if (Next_flag)
+        if ((Next != null) && (Back != null) && (START != null))
         {
-            x = 3.1f;
-            set_Nextposition();
-            move_value += x;
-         
+            Next.GetComponent<Button>().onClick.AddListener(() => OnNext());
+            Back.GetComponent<Button>().onClick.AddListener(() => OnBack());
+            START.GetComponent<Button>().onClick.AddListener(() => ClickSTART());
 
-            if (move_value > 2160.0f   )
+
+            if (Next_flag)
             {
-                OffNext();
-                move_value = 0.0f;
-            }
-         
-        }
+                x = 3.1f;
+                set_Nextposition();
+                move_value += x;
 
-        if (Back_flag)
-        {
-            x = 3.1f;
-            set_Backposition();
-            move_value -= x;
-           
 
-            
-            if (move_value < -2160.0f)
-            {
-                OffBack();
-                move_value = 0.0f;
+                if (move_value > 2160.0f)
+                {
+                    OffNext();
+                    move_value = 0.0f;
+                }
+
             }
 
-           
-        }
+            if (Back_flag)
+            {
+                x = 3.1f;
+                set_Backposition();
+                move_value -= x;
 
 
-        if(Slide[0].GetComponent<Transform>().localPosition.x > -5.0f)
-        {
-            Back.GetComponent<Button>().interactable = false;
-        }       
-        else
-        {
-            Back.GetComponent<Button>().interactable = true;
-        }
 
-        if (Slide[0].GetComponent<Transform>().localPosition.x < -(2160.0f * Slide.Count) + 20.0f )
-        {
-            Next.GetComponent<Button>().interactable = false;
-        }
-        else
-        {
-            Next.GetComponent<Button>().interactable = true;
-        }
+                if (move_value < -2160.0f)
+                {
+                    OffBack();
+                    move_value = 0.0f;
+                }
 
+
+            }
+
+
+            if (Slide[0].GetComponent<Transform>().localPosition.x > -5.0f)
+            {
+                Back.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                Back.GetComponent<Button>().interactable = true;
+            }
+
+            if (Slide[0].GetComponent<Transform>().localPosition.x < -(2160.0f * Slide.Count) + 20.0f)
+            {
+                Next.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                Next.GetComponent<Button>().interactable = true;
+            }
+
+        }//!=null
     }
       
     
@@ -158,8 +179,10 @@ public class SlideManager : MonoBehaviour
         for (int i = 0; i < Slide.Count; i++)
             {
             Slide[i].GetComponent<Transform>().localPosition = new Vector3(Slide[i].GetComponent<Transform>().localPosition.x - x, Slide[i].GetComponent<Transform>().localPosition.y, Slide[i].GetComponent<Transform>().localPosition.z);
-            START.GetComponent<Transform>().localPosition = new Vector3(START.GetComponent<Transform>().localPosition.x- x, START.GetComponent<Transform>().localPosition.y, START.GetComponent<Transform>().localPosition.z);
+            START.GetComponent<Transform>().localPosition = new Vector3(Slide[i].GetComponent<Transform>().localPosition.x - x + 2160.0f, Slide[i].GetComponent<Transform>().localPosition.y, Back.GetComponent<Transform>().localPosition.z);
         }
+
+
     }
 
     void set_Backposition()
@@ -168,7 +191,7 @@ public class SlideManager : MonoBehaviour
 
         {
             Slide[i].GetComponent<Transform>().localPosition = new Vector3(Slide[i].GetComponent<Transform>().localPosition.x + x, Slide[i].GetComponent<Transform>().localPosition.y, Slide[i].GetComponent<Transform>().localPosition.z);
-            START.GetComponent<Transform>().localPosition = new Vector3(START.GetComponent<Transform>().localPosition.x + x, START.GetComponent<Transform>().localPosition.y, START.GetComponent<Transform>().localPosition.z);
+           // START.GetComponent<Transform>().localPosition = new Vector3(START.GetComponent<Transform>().localPosition.x + x, START.GetComponent<Transform>().localPosition.y, START.GetComponent<Transform>().localPosition.z);
         }
     }
 
@@ -211,4 +234,29 @@ public class SlideManager : MonoBehaviour
         
         Back = Instantiate(_Back, new Vector3(-7.0f, -3.5f, 2.0f), Quaternion.identity, _backgroundObject.transform);
     }
+
+    void ClickSTART()
+    {
+
+        Destroy(Back);
+        Destroy(Next);
+        Destroy(START);
+        // Destroy(background);
+        destroyObject.isFadeOut = true;
+        gameManager.play();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

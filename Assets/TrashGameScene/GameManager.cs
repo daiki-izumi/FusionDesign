@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] string FilePath;
 
     [SerializeField] EffectManager effectManager;
+    [SerializeField] SlideManager slideManager;
 
     [SerializeField] GameObject _1;
     [SerializeField] GameObject _2;
@@ -105,10 +106,11 @@ public class GameManager : MonoBehaviour
         OW.Add(OW_1);
         OW.Add(OW_2);
       
-
-        Play.onClick
+        /*
+        slideManager.START.GetComponent<Button>().onClick
           .AsObservable()
           .Subscribe(_ => play());
+        */
         /*
         SetChart.onClick
           .AsObservable()
@@ -290,7 +292,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void play()
+    public void play()
     {
        
         PlayTime = Time.time * 1000;
