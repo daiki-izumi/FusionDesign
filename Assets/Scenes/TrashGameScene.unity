@@ -801,6 +801,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &955575431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955575433}
+  - component: {fileID: 955575432}
+  m_Layer: 0
+  m_Name: DestroyObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &955575432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955575431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16b07653c2e924da130b5502bdc407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeOut: 0
+--- !u!4 &955575433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955575431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.05570647, y: -0.18148579, z: 2.116033}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1199759244
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,7 +960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 392236039}
-  _background: {fileID: 21300000, guid: fb8e7b04b4bc76b43ae1add2667c406e, type: 3}
   _0: {fileID: 21300000, guid: a710bd2e18cb14e4e9214f6508311058, type: 3}
   _1: {fileID: 21300000, guid: fae3ba95cbba1064684f9c70e373576d, type: 3}
   _2: {fileID: 21300000, guid: d99ada34d8b31c147b16cd94372ef34b, type: 3}
@@ -928,7 +972,6 @@ MonoBehaviour:
     type: 3}
   panel: {fileID: 739876693063962805, guid: a7330755327ef584cbbf96b95fe10af7, type: 3}
   _START: {fileID: 4227355589318411254, guid: 3b59994b7afe1014e8a9092dd5d4e9f7, type: 3}
-  START: {fileID: 0}
 --- !u!4 &1427532532
 Transform:
   m_ObjectHideFlags: 0
@@ -1154,7 +1197,7 @@ Transform:
   m_GameObject: {fileID: 1804625229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 12000}
-  m_LocalScale: {x: 108, y: 108, z: 108}
+  m_LocalScale: {x: 100, y: 100, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1875511710}

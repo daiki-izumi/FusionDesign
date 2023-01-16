@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
+
+
 using Debug = UnityEngine.Debug;
 
 public class SlideManager : MonoBehaviour
@@ -31,7 +33,7 @@ public class SlideManager : MonoBehaviour
 
     [SerializeField] GameObject _START;
 
-    [SerializeField] DestroyObject destroyObject;
+   //
 
     List<GameObject> Slide;
 
@@ -47,27 +49,27 @@ public class SlideManager : MonoBehaviour
     bool Next_flag, Back_flag;
 
     int list_number;
+
+
+    float fadeSpeed = 0.001f;        //透明度が変わるスピードを管理
+    float red_img, green_img, blue_img, alfa_img;   //パネルの色、不透明度を管理
+
+    bool isFadeOut;  //フェードアウト処理の開始、完了を管理するフラグ
+    Image fadeImage;
+
     void Awake()
     {
 
         Next_flag = false;
         Back_flag = false;
-
+        
         Slide = new List<GameObject>();
-      //  GameObject slide, background;
+      
         Transform parent = _backgroundObject.transform;
         Quaternion q = Quaternion.identity;
 
         background = Instantiate(backpanel, new Vector3(0.0f, 0.0f, 2.0f), q, parent) as GameObject;
        
-
-
-
-
-
-
-
-
 
 
 
@@ -103,7 +105,17 @@ public class SlideManager : MonoBehaviour
         PutBack();
 
         START = Instantiate(_START, new Vector3(0.0f, 0.0f, 0.0f), q, parent);
-        
+
+
+
+        if ((background.GetComponent<Image>() != null) && (Back.GetComponent<Image>() != null) && (Next.GetComponent<Image>() != null) && (START.GetComponent<Image>() != null))
+        {
+            fadeImage = background.GetComponent<Image>();
+            alfa_img = fadeImage.color.a;
+
+            isFadeOut = false;
+        }
+
 
     }
 
@@ -149,8 +161,6 @@ public class SlideManager : MonoBehaviour
 
 
             }
-
-
             if (Slide[0].GetComponent<Transform>().localPosition.x > -5.0f)
             {
                 Back.GetComponent<Button>().interactable = false;
@@ -169,7 +179,47 @@ public class SlideManager : MonoBehaviour
                 Next.GetComponent<Button>().interactable = true;
             }
 
+            /////
+
+
+
+
+
+
+            /////
+
+
+            if (background.GetComponent<Image>() != null)
+            {
+                //Debug.Log(fadeImage);
+                Debug.Log(isFadeOut);
+                if (isFadeOut)
+                {
+                    StartFadeOut_img();
+
+                }
+
+            }
+
+           
+
+
+
+
         }//!=null
+
+
+        if (background.GetComponent<Image>() != null)
+        {
+            //Debug.Log(fadeImage);
+            Debug.Log(isFadeOut);
+            if (isFadeOut)
+            {
+                StartFadeOut_img();
+
+            }
+
+        }
     }
       
     
@@ -199,13 +249,7 @@ public class SlideManager : MonoBehaviour
     void OnNext()
     {
         Next_flag = true;
-/*
-        Destroy(Back);
-        Destroy(Next);
-        Destroy(_background);
-        for (int i = 0; i < Slide.Count; i++)
-            Destroy(Slide[i]);
-*/
+
 
     }
 
@@ -238,16 +282,40 @@ public class SlideManager : MonoBehaviour
     void ClickSTART()
     {
 
-        Destroy(Back);
-        Destroy(Next);
-        Destroy(START);
-        // Destroy(background);
-        destroyObject.isFadeOut = true;
+       
+       isFadeOut = true;
         gameManager.play();
 
     }
 
 
+
+    void StartFadeOut_img()
+    {
+        alfa_img -= fadeSpeed;                //a)不透明度を徐々に下げる
+        SetAlpha_img();
+        Debug.Log("ffffff");//b)変更した不透明度パネルに反映する
+        if (alfa_img <= 0)
+        {                    //c)完全に透明になったら処理を抜ける
+
+            // Debug.Log("ffffff");
+              isFadeOut = false;
+            Destroy(Back);
+            Destroy(Next);
+            Destroy(START);
+            fadeImage.enabled = false;    //d)パネルの表示をオフにする
+        }
+    }
+
+    void SetAlpha_img()
+    {
+        fadeImage.color = new Color(background.GetComponent<Image>().color.r, background.GetComponent<Image>().color.g, background.GetComponent<Image>().color.b, alfa_img);
+        Back.GetComponent<Image>().color = new Color(background.GetComponent<Image>().color.r, background.GetComponent<Image>().color.g, background.GetComponent<Image>().color.b, alfa_img);
+        Next.GetComponent<Image>().color = new Color(background.GetComponent<Image>().color.r, background.GetComponent<Image>().color.g, background.GetComponent<Image>().color.b, alfa_img);
+        START.GetComponent<Image>().color = new Color(background.GetComponent<Image>().color.r, background.GetComponent<Image>().color.g, background.GetComponent<Image>().color.b, alfa_img);
+
+
+    }
 
 
 
