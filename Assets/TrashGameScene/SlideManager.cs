@@ -73,7 +73,7 @@ public class SlideManager : MonoBehaviour
 
 
 
-        panel.gameObject.transform.localScale = new Vector3(0.9f, 0.9f, 1.0f);
+        panel.gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 
         slide = Instantiate(panel, new Vector3(0.0f, 0.0f, 5.0f), q, parent);
         slide.GetComponent<Image>().sprite = _0;
@@ -241,7 +241,7 @@ public class SlideManager : MonoBehaviour
 
         {
             Slide[i].GetComponent<Transform>().localPosition = new Vector3(Slide[i].GetComponent<Transform>().localPosition.x + x, Slide[i].GetComponent<Transform>().localPosition.y, Slide[i].GetComponent<Transform>().localPosition.z);
-           // START.GetComponent<Transform>().localPosition = new Vector3(START.GetComponent<Transform>().localPosition.x + x, START.GetComponent<Transform>().localPosition.y, START.GetComponent<Transform>().localPosition.z);
+            START.GetComponent<Transform>().localPosition = new Vector3(START.GetComponent<Transform>().localPosition.x + x, START.GetComponent<Transform>().localPosition.y, START.GetComponent<Transform>().localPosition.z);
         }
     }
 
@@ -270,13 +270,13 @@ public class SlideManager : MonoBehaviour
 
     void PutNext()
     {
-        Next = Instantiate(_Next, new Vector3(7.0f, -3.5f, 2.0f), Quaternion.identity, _backgroundObject.transform);
+        Next = Instantiate(_Next, new Vector3(7.5f, -3.8f, 2.0f), Quaternion.identity, _backgroundObject.transform);
     }
 
     void PutBack()
     {
         
-        Back = Instantiate(_Back, new Vector3(-7.0f, -3.5f, 2.0f), Quaternion.identity, _backgroundObject.transform);
+        Back = Instantiate(_Back, new Vector3(-7.5f, -3.8f, 2.0f), Quaternion.identity, _backgroundObject.transform);
     }
 
     void ClickSTART()

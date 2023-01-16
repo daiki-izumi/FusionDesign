@@ -11,8 +11,14 @@ public class MessageEffectManager : MonoBehaviour
     [SerializeField] GameObject Good;
     [SerializeField] GameObject Failure;
 
+    [SerializeField] Transform BeatPoint;
+    public GameObject effectPrefab;
+    GameObject effect;
     void OnEnable()
     {
+
+        effect = Instantiate(effectPrefab, BeatPoint.position, Quaternion.identity);
+        effect.SetActive(false);
         GameManager
           .OnMessageEffect
           .Where(result => result == "good")
@@ -28,9 +34,14 @@ public class MessageEffectManager : MonoBehaviour
     {
         Good.SetActive(false);
         Good.SetActive(true);
+        effect.SetActive(false);
+        effect.SetActive(true); 
 
         Observable.Timer(TimeSpan.FromMilliseconds(200))
           .Subscribe(_ => Good.SetActive(false));
+
+        Observable.Timer(TimeSpan.FromMilliseconds(500))
+          .Subscribe(_ => effect.SetActive(false));
     }
 
     void failureShow()

@@ -1,14 +1,66 @@
 {
    "title": "sample",
-  "bpm": "120",
+  "bpm": "136",
   "notes": [
-    {"timing": "5000", "type": "3"},
-    {"timing": "6000", "type": "3"},
-    {"timing": "6500", "type": "3"},
-    {"timing": "7250", "type": "3"},
-    {"timing": "7500", "type": "3"},
-    {"timing": "7750", "type": "3"},
-    {"timing": "8500", "type": "3"},
-    {"timing": "9500", "type": "3"},
+    {
+      "timing": "5440",
+      "type": "3"
+    },
+    {
+      "timing": "6256",
+      "type": "3"
+    },
+    {
+      "timing": "7072",
+      "type": "3"
+    },
+    {
+      "timing": "7888",
+      "type": "3"
+    },
+    {
+      "timing": "8704",
+      "type": "3"
+    },
+    {
+      "timing": "9520",
+      "type": "3"
+    },
+    {
+      "timing": "10336",
+      "type": "3"
+    },
+    {
+      "timing": "11152",
+      "type": "3"
+    },
+    {
+      "timing": "11968",
+      "type": "3"
+    },
+    {
+      "timing": "12784",
+      "type": "3"
+    },
+    {
+      "timing": "13600",
+      "type": "3"
+    },
+    {
+      "timing": "14416",
+      "type": "3"
+    },
+    {
+      "timing": "15232",
+      "type": "3"
+    },
+    {
+      "timing": "16048",
+      "type": "3"
+    },
+    {
+      "timing": "16864",
+      "type": "3"
+    }
   ]
 }
