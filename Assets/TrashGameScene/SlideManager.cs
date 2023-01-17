@@ -192,7 +192,7 @@ public class SlideManager : MonoBehaviour
             if (background.GetComponent<Image>() != null)
             {
                 //Debug.Log(fadeImage);
-                Debug.Log(isFadeOut);
+             //   Debug.Log(isFadeOut);
                 if (isFadeOut)
                 {
                     StartFadeOut_img();
@@ -212,7 +212,7 @@ public class SlideManager : MonoBehaviour
         if (background.GetComponent<Image>() != null)
         {
             //Debug.Log(fadeImage);
-            Debug.Log(isFadeOut);
+          //  Debug.Log(isFadeOut);
             if (isFadeOut)
             {
                 StartFadeOut_img();
@@ -294,7 +294,7 @@ public class SlideManager : MonoBehaviour
     {
         alfa_img -= fadeSpeed;                //a)不透明度を徐々に下げる
         SetAlpha_img();
-        Debug.Log("ffffff");//b)変更した不透明度パネルに反映する
+       // Debug.Log("ffffff");//b)変更した不透明度パネルに反映する
         if (alfa_img <= 0)
         {                    //c)完全に透明になったら処理を抜ける
 

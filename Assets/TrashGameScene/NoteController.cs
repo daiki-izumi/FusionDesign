@@ -20,6 +20,8 @@ public class NoteController : MonoBehaviour
     Vector3 firstPos;
     bool isGo;
     float GoTime;
+    float StartTime;
+    bool one = true;
 
     void OnEnable()
     {
@@ -29,8 +31,8 @@ public class NoteController : MonoBehaviour
         Random myObject = new Random();
         float ranNum = (float)myObject.NextDouble();
         Quaternion rot = Quaternion.Euler(0, 0, ranNum * 0.6f);
-       // Debug.Log(ranNum);
-
+        // Debug.Log(ranNum);
+        
 
         this.UpdateAsObservable()
           .Where(_ => isGo)
@@ -40,6 +42,11 @@ public class NoteController : MonoBehaviour
           
               Quaternion q = this.transform.rotation;
               this.gameObject.transform.rotation = q * rot;
+               //Debug.Log(StartTime );
+              if (Time.time - StartTime > 38.5 )
+              {
+                  Debug.Log("end");//ƒQ[ƒ€I—¹
+              }
             
           });
     }
@@ -65,29 +72,17 @@ public class NoteController : MonoBehaviour
         Distance = distance;
         During = during;
         GoTime = Time.time * 1000;
-
+        if (one)
+        {
+            StartTime = Time.time;
+        }
+        one= false;
         isGo = true;
     }
     
     public float high(float x)
     {
-        /*
-        float a,b,c;
-
-        a = -0.0433673469f;
-        b = 0.260204082f;
-        c = 4.10969388f;
-
-        if(x > 3.0f)
-        {
-            a = -0.027700831f;
-            b = a * 6.0f;
-            c = a * 9.0f + 6.5f;
-
-        }
-
-        return a * x * x + b * x + c;
-        */
+      
 
         float a, b, c;
 

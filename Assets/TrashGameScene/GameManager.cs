@@ -247,7 +247,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Note = Instantiate(_1, SpawnPoint.position, Quaternion.identity);
+                Note = Instantiate(_1, BeatPoint.position, Quaternion.identity);
             }
 
             // setParameterŠÖ”‚ğ”­‰Î
