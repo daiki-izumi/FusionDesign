@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] string FilePath;
-    [SerializeField] string ClipPath; //　追加
+    [SerializeField] string ClipPath_BGM; //　追加
+    [SerializeField] string ClipPath_SE; //　追加
 
     [SerializeField] EffectManager effectManager;
     [SerializeField] SlideManager slideManager;
@@ -52,7 +53,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button SetChart;
 
 
-    AudioSource Music; 
+    AudioSource Music;
+    AudioSource SE;
 
 
     string Title;
@@ -84,6 +86,7 @@ public class GameManager : MonoBehaviour
     {
 
         Music = this.GetComponent<AudioSource>(); // 追加
+        //SE = this.GetComponent<AudioSource>(); // 追加
 
         Distance = Math.Abs(BeatPoint.position.x - SpawnPoint.position.x);
         During = 2 * 1000;
@@ -203,7 +206,8 @@ public class GameManager : MonoBehaviour
 
     void loadChart()
     {
-        Music.clip = (AudioClip)Resources.Load(ClipPath); // 追加
+        Music.clip = (AudioClip)Resources.Load(ClipPath_BGM); // 追加
+       // SE.clip = (AudioClip)Resources.Load(ClipPath_SE); // 追加
 
         Notes = new List<GameObject>();
         NoteTimings = new List<float>(); // 追加
@@ -286,6 +290,7 @@ public class GameManager : MonoBehaviour
                 NoteTimings[minDiffIndex] = -1;
                 Notes[minDiffIndex].SetActive(false);
                 MessageEffectSubject.OnNext("good"); // イベントを通知
+               // SE.Play();
                 //スコア加算
             }
             else

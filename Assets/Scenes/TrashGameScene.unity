@@ -653,7 +653,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FilePath: Charts/Sample
-  ClipPath: Music/bgm1
+  ClipPath_BGM: Music/bgm1
+  ClipPath_SE: Music/se
   effectManager: {fileID: 684615224}
   slideManager: {fileID: 0}
   _1: {fileID: 555717367890274267, guid: 5515a9e18575a4d4ebb38bfc7319f9ea, type: 3}
@@ -1615,7 +1616,6 @@ MonoBehaviour:
   Good: {fileID: 261153450}
   Failure: {fileID: 1719308838}
   BeatPoint: {fileID: 43206198}
-  effectPrefab: {fileID: 100000, guid: fb2b06b61d6822d449ad6dff7007557d, type: 3}
 --- !u!4 &1989139786
 Transform:
   m_ObjectHideFlags: 0
