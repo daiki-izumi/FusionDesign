@@ -115,7 +115,7 @@ namespace QuizGame {
             Quaternion rotation = Quaternion.identity;
             Transform parent = _NextButtonPanel.transform;
          
-            Vector2 position = new Vector2(7, -3.7f);
+            Vector2 position = new Vector2(6, 3.7f);
             NextButton = Instantiate(_NextButton, position, rotation, parent) as GameObject;
             
             NextButton.GetComponent<Button>().onClick.AddListener(() => ClickNextButton());
@@ -144,7 +144,7 @@ namespace QuizGame {
         public void MyOnClick(int index,int num,string ButtonText,string answer)
         {
            
-            /*
+            
             if (ButtonText == answer)
             {
                 print("good");
@@ -154,7 +154,7 @@ namespace QuizGame {
             {
                 print("bad");
             }
-            */
+            
             PutNextButton();
 
             for (int i = 0; i < num; i++)

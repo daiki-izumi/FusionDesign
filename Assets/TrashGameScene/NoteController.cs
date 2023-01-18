@@ -43,9 +43,9 @@ public class NoteController : MonoBehaviour
               Quaternion q = this.transform.rotation;
               this.gameObject.transform.rotation = q * rot;
                //Debug.Log(StartTime );
-              if (Time.time - StartTime > 38.5 )
+              if (Time.time - StartTime > 38.0 )
               {
-                  Debug.Log("end");//ゲーム終了
+                 // Debug.Log("end");//ゲーム終了
               }
             
           });

@@ -7,6 +7,7 @@ using UniRx;
 using UniRx.Triggers;
 using System.Diagnostics;
 using Random = System.Random;
+using Debug = UnityEngine.Debug;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,7 +23,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _2;
     [SerializeField] GameObject _3;
     [SerializeField] GameObject _4;
-   
+
+
+    [SerializeField] GameObject bagBW;
+
+
+
     [SerializeField] Sprite BW_1;
     [SerializeField] Sprite BW_2;
     [SerializeField] Sprite BW_3;
@@ -71,6 +77,12 @@ public class GameManager : MonoBehaviour
     float BeatRange;
     List<float> NoteTimings; // 追加
 
+    public bool touch_BW ;
+    public bool touch_NBW;
+    public bool touch_GCP;
+    public bool touch_OW;
+
+    private float end_time;
     // イベントを通知するサブジェクトを追加
     Subject<string> MessageEffectSubject = new Subject<string>();
 
@@ -116,26 +128,24 @@ public class GameManager : MonoBehaviour
         OW.Add(OW_1);
         OW.Add(OW_2);
       
-        /*
-        slideManager.START.GetComponent<Button>().onClick
-          .AsObservable()
-          .Subscribe(_ => play());
-        */
-        /*
-        SetChart.onClick
-          .AsObservable()
-          .Subscribe(_ => loadChart());*/
 
         if(one = true)
         {
             loadChart();
             one = false;
+            touch_BW= false;
+            touch_NBW= false;
+            touch_GCP= false;
+            touch_OW= false;
         }
 
 
+    
 
 
-        
+        touch_BW = false;
+
+
         this.UpdateAsObservable()
           .Where(_ => isPlaying)
           .Where(_ => Notes.Count > GoIndex)
@@ -152,7 +162,8 @@ public class GameManager : MonoBehaviour
                    .Where(_ => Input.GetKeyDown(KeyCode.V))
                    .Subscribe(_ => {
                        beat("1", Time.time * 1000 - PlayTime);
-                     });
+                       effectManager.setboolBW();
+                   });
 
                
                this.UpdateAsObservable()
@@ -160,43 +171,74 @@ public class GameManager : MonoBehaviour
                  .Where(_ => Input.GetKeyDown(KeyCode.B))
                  .Subscribe(_ => {
                      beat("2", Time.time * 1000 - PlayTime);
-                    });
+                     effectManager.setboolNBW();
+                 });
 
                this.UpdateAsObservable()
                    .Where(_ => isPlaying)
                    .Where(_ => Input.GetKeyDown(KeyCode.N))
                    .Subscribe(_ => {
                        beat("3", Time.time * 1000 - PlayTime);
-                     });
+                       effectManager.setboolGCP();
+                   });
 
                 this.UpdateAsObservable()
                    .Where(_ => isPlaying)
                    .Where(_ => Input.GetKeyDown(KeyCode.M))
                    .Subscribe(_ => {
                       beat("4", Time.time * 1000 - PlayTime);
+                       effectManager.setboolOW();
+                   });
 
-                     });
-        
         this.UpdateAsObservable()
-                .Where(_ => Input.GetKeyDown(KeyCode.V))
-                .Subscribe(_ => {    
-                    effectManager.setboolBW();
-                });
+                  .Where(_ => touch_BW )
+                 // .Where(_ => Input.GetKeyDown(KeyCode.V))
+                  .Subscribe(_ => {
+                      beat("1", Time.time * 1000 - PlayTime);
+                      effectManager.setboolBW();
+                      touch_BW = false;
+                  });
+
         this.UpdateAsObservable()
-              .Where(_ => Input.GetKeyDown(KeyCode.B))
-              .Subscribe(_ => {
-                  effectManager.setboolNBW();
-              });
+                  .Where(_ => touch_NBW)
+                  // .Where(_ => Input.GetKeyDown(KeyCode.V))
+                  .Subscribe(_ => {
+                      beat("2", Time.time * 1000 - PlayTime);
+                      effectManager.setboolNBW();
+                      touch_NBW = false;
+                  });
         this.UpdateAsObservable()
-              .Where(_ => Input.GetKeyDown(KeyCode.N))
-              .Subscribe(_ => {
-                  effectManager.setboolGCP();
-              });
+                  .Where(_ => touch_GCP)
+                  // .Where(_ => Input.GetKeyDown(KeyCode.V))
+                  .Subscribe(_ => {
+                      beat("3", Time.time * 1000 - PlayTime);
+                      effectManager.setboolGCP();
+                      touch_GCP = false;
+
+                  });
+
         this.UpdateAsObservable()
-              .Where(_ => Input.GetKeyDown(KeyCode.M))
-              .Subscribe(_ => {
-                  effectManager.setboolOW();
-              });
+                  .Where(_ => touch_OW)
+                  // .Where(_ => Input.GetKeyDown(KeyCode.V))
+                  .Subscribe(_ => {
+                      beat("4", Time.time * 1000 - PlayTime);
+                      effectManager.setboolOW();
+                      touch_OW = false;
+                  });
+
+        this.UpdateAsObservable()
+                  .Where(_ => isPlaying)               
+                  .Subscribe(_ => {
+                     end_time += Time.deltaTime;
+                      Debug.Log(end_time);
+                      if(end_time > 45.0f)
+                      {
+                        //  Debug.Log("ddddddddddddd");
+                        //Scene
+                      }
+                  });
+
+     
 
 
 
@@ -312,5 +354,6 @@ public class GameManager : MonoBehaviour
         Music.Play(); // 追加
         PlayTime = Time.time * 1000;
         isPlaying = true;
+        end_time = 0.0f;
     }
 }
