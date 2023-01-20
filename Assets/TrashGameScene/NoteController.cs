@@ -84,15 +84,9 @@ public class NoteController : MonoBehaviour
     {
       
 
-        float a, b, c;
+        float a;
 
-        float middle_x, middle_y;
-        float beat_x, beat_y;
-
-        middle_x = 3.0f;
-        middle_y = 4.5f;
-        beat_x = -6.5f;
-        beat_y = 2.0f;
+       
 
          a = -0.027700831f;
        // Debug(a);

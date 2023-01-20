@@ -9,6 +9,9 @@ namespace QuizGame {
     {
         
         [SerializeField] Sprite _ImageButton;
+        
+        [SerializeField] GameObject _GoodPrefab;
+        [SerializeField] GameObject _BadPrefab;
         [SerializeField] GameObject _ButtonObject;
         [SerializeField] GameObject _ButtonPrefab;
         [SerializeField] GameObject _NextButton;
@@ -20,11 +23,13 @@ namespace QuizGame {
 
         // ëÄçÏÇµÇΩÇ¢PrefabÇéwíËÇ≈Ç´ÇÈÇÊÇ§Ç…Ç∑ÇÈÇΩÇﬂÇÃé´èë
         Dictionary<int, GameObject> _ButtonPrehabObject;
-
+        Dictionary<string, GameObject> _GoodPrehabObject;
+        Dictionary<string, GameObject> _BadPrehabObject;
 
         GameObject ListButton;
         GameObject NextButton;
-        
+        GameObject Good;
+        GameObject Bad;
 
         void Awake()
         {
@@ -35,7 +40,10 @@ namespace QuizGame {
             _ButtonPanelObject.Add("ButtonPanelObject", _ButtonObject);
           
             _ButtonPrehabObject = new Dictionary<int, GameObject>();
-            
+
+            _GoodPrehabObject = new Dictionary<string, GameObject>();
+            _BadPrehabObject = new Dictionary<string, GameObject>();
+
         }
 
 
@@ -55,7 +63,7 @@ namespace QuizGame {
             Vector2 position_4 = new Vector2(-4, 2);
             Quaternion rotation = Quaternion.identity;
             Transform parent = parentObject.transform;
-            
+           
             Destroy(NextButton);
             for (int i = 0; i < ButtonNum; i++)
             {
@@ -65,9 +73,22 @@ namespace QuizGame {
                 }else if(ButtonNum == 2)
                 {
                     ListButton = Instantiate(_ButtonPrefab, position_2, rotation, parent) as GameObject;
+
                 }else if( ButtonNum == 4) 
                 {
                     ListButton = Instantiate(_ButtonPrefab, position_4, rotation, parent) as GameObject;
+
+                    //
+                    Good = Instantiate(_GoodPrefab, position_4, rotation, parent) as GameObject;
+                    Good.GetComponent<Transform>().localPosition = new Vector3(Good.GetComponent<Transform>().localPosition.x + 220.0f , Good.GetComponent<Transform>().localPosition.y - 45.0f, Good.GetComponent<Transform>().localPosition.z);
+                    Bad = Instantiate(_BadPrefab, position_4, rotation, parent) as GameObject;
+                    Bad.GetComponent<Transform>().localPosition = new Vector3(Bad.GetComponent<Transform>().localPosition.x + 220.0f,Bad.GetComponent<Transform>().localPosition.y - 25.0f, Bad.GetComponent<Transform>().localPosition.z);
+
+                    Good.gameObject.SetActive(false);
+                    Bad.gameObject.SetActive(false);
+                    //
+                    //
+
                 }
                 var listbuttontext = ListButton.GetComponentInChildren<Text>();
                 listbuttontext.text = ButtonText[i];
@@ -88,6 +109,8 @@ namespace QuizGame {
                
                 
                 _ButtonPrehabObject.Add(i, ListButton);
+                _GoodPrehabObject.Add(ButtonText[n], Good);
+                _BadPrehabObject.Add(ButtonText[n], Bad);
             }
 
         
@@ -105,11 +128,12 @@ namespace QuizGame {
                 
                 Destroy(_ButtonPrehabObject[i]);
                 _ButtonPrehabObject.Remove(i);
+               
             }
         }
         // button_1(Clone)
 
-        public void PutNextButton()
+        public void PutNextButton(string answer,string ButtonText)
         {
 
             Quaternion rotation = Quaternion.identity;
@@ -118,14 +142,21 @@ namespace QuizGame {
             Vector2 position = new Vector2(6, 3.7f);
             NextButton = Instantiate(_NextButton, position, rotation, parent) as GameObject;
             
-            NextButton.GetComponent<Button>().onClick.AddListener(() => ClickNextButton());
+            NextButton.GetComponent<Button>().onClick.AddListener(() => ClickNextButton(answer,ButtonText));
 
         }
 
-        public void ClickNextButton()
+        public void ClickNextButton(string answer,string ButtonText)
         {
             RemoveButton(4);
             GameManager.Instance.mainTextController.OnClick();
+
+
+            _GoodPrehabObject[answer].gameObject.SetActive(false);
+            _BadPrehabObject[ButtonText].gameObject.SetActive(false);
+
+
+
             Destroy(NextButton);
 
 
@@ -138,24 +169,27 @@ namespace QuizGame {
             SceneManager.LoadScene("QuizScene");
         }
 
+
         
 
 
         public void MyOnClick(int index,int num,string ButtonText,string answer)
         {
-           
-            
+            _GoodPrehabObject[answer].gameObject.SetActive(true); 
+
+
             if (ButtonText == answer)
             {
                 print("good");
-                
+                _GoodPrehabObject[answer].gameObject.SetActive(true);
             }
             else
             {
                 print("bad");
+                _BadPrehabObject[ButtonText].gameObject.SetActive(true);
             }
             
-            PutNextButton();
+            PutNextButton(answer,ButtonText);
 
             for (int i = 0; i < num; i++)
             {
