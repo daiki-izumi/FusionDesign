@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3061185909461257304}
   - component: {fileID: 2264046810211227800}
   - component: {fileID: 7192300310734095208}
+  - component: {fileID: 3599069851037810981}
   m_Layer: 5
   m_Name: ButtonPrehab
   m_TagString: Untagged
@@ -122,6 +123,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3599069851037810981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267653461182793324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03aa5edc9935e748b02c2b28ef87443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeOut: 0
+  isFadeIn: 1
+  FadeOutflag: 0
+  FadeInflag: 1
 --- !u!1 &8106629660065326569
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,4 +218,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 

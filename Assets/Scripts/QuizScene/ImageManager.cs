@@ -10,6 +10,12 @@ namespace QuizGame
         [SerializeField] Sprite _Scene1;
         [SerializeField] Sprite _Scene2;
         [SerializeField] Sprite _Scene3;
+        [SerializeField] Sprite _Scene4;
+        [SerializeField] Sprite _Scene5;
+        [SerializeField] Sprite _Scene6;
+        [SerializeField] Sprite _Scene7;
+        [SerializeField] Sprite _Scene8;
+       
         [SerializeField] GameObject _backgroundObject;
         [SerializeField] GameObject _imagePrefab;
 
@@ -25,6 +31,12 @@ namespace QuizGame
             _textToSprite.Add("Scene1", _Scene1);
             _textToSprite.Add("Scene2", _Scene2);
             _textToSprite.Add("Scene3", _Scene3);
+            _textToSprite.Add("Scene4", _Scene4);
+            _textToSprite.Add("Scene5", _Scene5);
+            _textToSprite.Add("Scene6", _Scene6);
+            _textToSprite.Add("Scene7", _Scene7);
+            _textToSprite.Add("Scene8", _Scene8);
+          
 
             _textToSpriteObject = new Dictionary<string, GameObject>();
         }
@@ -41,6 +53,7 @@ namespace QuizGame
             item.GetComponent<Image>().sprite = image;//生成されたオブジェクト[item]のspriteをimageに
 
             _textToSpriteObject.Add(imageName, item);//Prehabを操作するための辞書にitemを格納
+            GameManager.Instance.characterManager.PutChara("Man");
         }
 
         // 画像を削除する

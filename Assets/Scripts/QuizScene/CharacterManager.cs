@@ -18,15 +18,16 @@ namespace QuizGame
 
         // 操作したいPrefabを指定できるようにするための辞書
         Dictionary<string, GameObject> _CharacterPrehabObject;
-
+        float x, y;
         void Awake()
         {
             _textToCharacter = new Dictionary<string, Sprite>();
            
-            _textToCharacter.Add("Character1", _Character1);
-            _textToCharacter.Add("Character2", _Character2);
+            _textToCharacter.Add("Man", _Character1);
+            _textToCharacter.Add("Woman", _Character2);
 
             _CharacterPrehabObject = new Dictionary<string, GameObject>();
+            
         }
 
 
@@ -34,9 +35,11 @@ namespace QuizGame
         // 画像を配置する
         public void PutChara(string charaName)
         {
+           // x = _Character1.width;
+
             Sprite image = _textToCharacter[charaName];//入力された文字列で画像を読みだす
             GameObject parentObject = _CharacterPanel;//画像を配置するpanelを呼び出す
-            Vector2 position = new Vector2(0, 0);
+            Vector2 position = new Vector2(-6.5f, 0);
             Quaternion rotation = Quaternion.identity;
             Transform parent = parentObject.transform;
             GameObject item = Instantiate(_CharacterPrefab, position, rotation, parent);//Instantiate(original,position,rotation,parent);
