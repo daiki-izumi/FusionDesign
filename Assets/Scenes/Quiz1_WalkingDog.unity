@@ -529,8 +529,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532836498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 35}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1157812508}
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532836498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFadeOut: 1
   isFadeIn: 0
-  FadeOutflag: 0
+  FadeOutflag: 1
   FadeInflag: 0
 --- !u!1 &1157812507
 GameObject:
@@ -1026,7 +1026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textFile: {fileID: 4900000, guid: f87e49b02cf263246895ef4d75f354ae, type: 3}
-  _textFile_2: {fileID: 4900000, guid: a3635452b6fb4dd418efc080b1863ec4, type: 3}
 --- !u!4 &1931875585
 Transform:
   m_ObjectHideFlags: 0
@@ -1071,8 +1070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b335a3be536e7c4b9c1bd2ed2b46bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Character1: {fileID: 21300000, guid: ab3775966dbb5b64bac37826f475441f, type: 3}
-  _Character2: {fileID: 21300000, guid: 01b29ed72d7fab6419f2b2ca035f0e52, type: 3}
+  _Character1: {fileID: 21300000, guid: ed5082a41177f044489680a2e834cf32, type: 3}
+  _Character2: {fileID: 21300000, guid: 90a199f4551bc08438b815929d572f0f, type: 3}
   _CharacterPanel: {fileID: 516781424}
   _CharacterPrefab: {fileID: 3158619093793503444, guid: b39be84ad2dbc1747b1aafb9a269dffe,
     type: 3}

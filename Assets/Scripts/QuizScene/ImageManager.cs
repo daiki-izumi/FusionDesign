@@ -53,7 +53,14 @@ namespace QuizGame
             item.GetComponent<Image>().sprite = image;//生成されたオブジェクト[item]のspriteをimageに
 
             _textToSpriteObject.Add(imageName, item);//Prehabを操作するための辞書にitemを格納
-            GameManager.Instance.characterManager.PutChara("Man");
+
+
+            if (true) { //ユーザー情報次第
+                GameManager.Instance.characterManager.PutChara("Woman");
+            } else
+            {
+                GameManager.Instance.characterManager.PutChara("Man");
+            }
         }
 
         // 画像を削除する

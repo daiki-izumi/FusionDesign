@@ -1,6 +1,0 @@
-&img eventCG2
-You have a lovely dog name POPY. He is really very cute and lovely
-You still have some time, so what can you do now?
-You can walk with your lovey POPY in a beautiful garden and enjoy your time. 
-Let's go for a short walk. 
-ゲームシーンに遷移

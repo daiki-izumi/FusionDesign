@@ -8,7 +8,7 @@ namespace QuizGame
     public class UserScriptManager : MonoBehaviour
     {
         [SerializeField] TextAsset _textFile;
-        [SerializeField] TextAsset _textFile_2;
+       
         // 文章中の文（ここでは１行ごと）を入れておくためのリスト
         List<string> _sentences = new List<string>();
         List<string> _question = new List<string>();
@@ -20,13 +20,9 @@ namespace QuizGame
             
             //add
             string story;
-            ///
-            if (StoryFlag == 0) { 
+           
              story = _textFile.text;
-         }else{
-            story = _textFile_2.text;
-        }
-            //StringReader reader = new StringReader(_textFile.text);
+     //StringReader reader = new StringReader(_textFile.text);
             StringReader reader = new StringReader(story);
             // テキストファイルの中身を、１行ずつリストに入れておく
 
@@ -98,9 +94,22 @@ namespace QuizGame
                 case "&rmchara":
                     GameManager.Instance.characterManager.RemoveChara(words[1]);
                     break;
-                case "&ChangeScene":
-                    SceneManager.LoadScene("SampleScene");
+                case "&ChangeSceneStory":
+                    SceneManager.LoadScene("StoryScene");
                     break;
+                case "&ChangeSceneQuiz1":
+                    SceneManager.LoadScene("Quiz1_WalkingDog");
+                    break;
+                case "&ChangeSceneQuiz2":
+                    SceneManager.LoadScene("Quiz2_Purchase");
+                    break;
+                case "&ChangeSceneQuiz3":
+                    SceneManager.LoadScene("Quiz3_Movie");
+                    break;
+                case "&ChangeSceneQuiz4":
+                    SceneManager.LoadScene("Quiz4_Earthquake");
+                    break;
+
             }
         }
     }

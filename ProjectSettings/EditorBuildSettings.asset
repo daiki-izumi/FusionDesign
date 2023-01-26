@@ -11,7 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoryScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/QuizScene.unity
     guid: 1741edc6a4d12de4282f8637631132da
+  - enabled: 1
+    path: Assets/Scenes/Quiz1_WalkingDog.unity
+    guid: 23bd378486f7bf24e962ebe3b77d2630
+  - enabled: 1
+    path: Assets/Scenes/Quiz2_Purchase.unity
+    guid: 909b45a294af1304f8f8af6f0c78885e
+  - enabled: 1
+    path: Assets/Scenes/Quiz3_Movie.unity
+    guid: 0b99238bac40f474390a164b700e21f0
+  - enabled: 1
+    path: Assets/Scenes/Quiz4_Earthquake.unity
+    guid: 5f3ab4afb4d20a049b70426db8f6b8c3
   m_configObjects: {}
