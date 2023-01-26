@@ -1,4 +1,4 @@
-&img Scene5 
+&img Scene4 
 &button 4 A B C D1 C 
 Question1
 kaisetusgrhsfhsersejjasfhserueaj
@@ -11,4 +11,4 @@ kaisetu
 &button 4 か き く け き 
 Question4
 kaisetu
-&ChangeSceneQuiz3
+&EndSceneQuiz2

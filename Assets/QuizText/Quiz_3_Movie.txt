@@ -11,4 +11,4 @@ kaisetu
 &button 4 か き く け き 
 Question4
 kaisetu
-&ChangeSceneQuiz4
+&EndSceneQuiz3

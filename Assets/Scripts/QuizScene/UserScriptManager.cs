@@ -109,7 +109,18 @@ namespace QuizGame
                 case "&ChangeSceneQuiz4":
                     SceneManager.LoadScene("Quiz4_Earthquake");
                     break;
-
+                case "&EndSceneQuiz1":
+                    SceneManager.LoadScene("Story3_Purchase some grocery");
+                    break;
+                case "&EndSceneQuiz2":
+                    SceneManager.LoadScene("Story4_Cardriving");
+                    break;
+                case "&EndSceneQuiz3":
+                    SceneManager.LoadScene("Story7_Enjoy Karaoke");
+                    break;
+                case "&EndSceneQuiz4":
+                    SceneManager.LoadScene("FinalScene");
+                    break;
             }
         }
     }
