@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//using TextScripts;
 using UnityEngine.Networking;
 using SimpleJSON;
 using UnityEngine.SceneManagement;
@@ -47,24 +46,24 @@ public class Story : MonoBehaviour
     void Start()
     {
         //キャンバスの設定
-        Canvas canvas = this.GetComponent<Canvas>();
+        /*Canvas canvas = this.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        canvas.worldCamera = targetCamera;
+        canvas.worldCamera = targetCamera;*/
         //@@子オブジェクト
-        bgObject = this.transform.GetChild(0).gameObject;
+        bgObject = GameObject.Find("Background_image"); //this.transform.GetChild(0).gameObject;
         //Image charaimage = bgObject.GetComponent<Transform>().transform.GetChild(0).GetComponentInChildren<Image>();
         //Debug.Log($"Child is {bgObject.name}");
         //@@孫オブジェクト
         //@セリフ背景画像
-        GameObject gcObject = bgObject.transform.GetChild(1).gameObject;
+        GameObject gcObject = GameObject.Find("Background_line"); //bgObject.transform.GetChild(1).gameObject;
         //@キャラクター画像
-        GameObject crObject = bgObject.transform.GetChild(0).gameObject;
+        GameObject crObject = GameObject.Find("CharaImage"); //bgObject.transform.GetChild(0).gameObject;
         //@話者
-        GameObject spObject = bgObject.transform.GetChild(2).gameObject;
+        GameObject spObject = GameObject.Find("Speaker"); //bgObject.transform.GetChild(2).gameObject;
         speaker = spObject.GetComponent<Text>();
         speaker.text = "Loading...";
         //@セリフ
-        GameObject lnObject = bgObject.transform.GetChild(3).gameObject;
+        GameObject lnObject = GameObject.Find("Line"); //bgObject.transform.GetChild(3).gameObject;
         lines = lnObject.GetComponent<Text>();
         lines.text = "Loading...";
         Debug.Log($"GrandChild is {gcObject.name}");
@@ -74,7 +73,7 @@ public class Story : MonoBehaviour
         Texture2D chara_texture = (Texture2D)AssetDatabase.LoadAssetAtPath<Texture>(ipath + "character/Chara_male.png");
         charaimage.sprite = Sprite.Create(chara_texture, new Rect(0, 0, chara_texture.width, chara_texture.height), Vector2.zero);
         Transform charatransform = crObject.GetComponent<Transform>();
-        charatransform.localScale = new Vector3((float)0.8, (float)0.8, (float)1.0);
+        charatransform.localScale = new Vector3((float)0.65, (float)0.65, (float)1.0);
 
         //背景画像
         Image bgimage = bgObject.GetComponent<Image>();
@@ -83,9 +82,11 @@ public class Story : MonoBehaviour
 
         //セリフ背景画像
         Image lnimage = gcObject.GetComponent<Image>();
-        Texture2D ln_texture = (Texture2D)AssetDatabase.LoadAssetAtPath<Texture>(ipath + "UI/CharaWindow.png");
+        Texture2D ln_texture = (Texture2D)AssetDatabase.LoadAssetAtPath<Texture>(ipath + "UI/Rectangle 8.png");
         lnimage.sprite = Sprite.Create(ln_texture, new Rect(0, 0, ln_texture.width, ln_texture.height), Vector2.zero);
-        
+        Transform lnimagetransform = gcObject.GetComponent<Transform>();
+        lnimagetransform.position = new Vector3(0, 0, 0); ;
+        lnimagetransform.localScale = new Vector3((float)0.35, (float)0.35, (float)1.0);
         //カウント
         count = 0;
         //int index_number = 2;
@@ -150,7 +151,7 @@ public class Story : MonoBehaviour
     //*デバッグ用*セリフをGoogle スプレッドシートから取ってくる関数
     public IEnumerator load_line(UnityEngine.Events.UnityAction<string[,]> callback)//
     {
-        UnityWebRequest request = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/1gM319Kf-031ZysuN3hg7oGGE8K9ZJJRiQO49wvzX6_I/values/sheet1?key=AIzaSyBRDQBQGyZwOaXENVp-xHcf0BfmVO55wC8");
+        UnityWebRequest request = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/19z89ky0ljd-cHRcqTj5LZRsJNq67AO53PV7eFEewZZQ/values/sheet1?key=AIzaSyCuqQfgKMHUOhtICFZ7m4Zq8A88EklPXi4");
         yield return request.SendWebRequest();
         string[,] numnum= new string[1, 4];
         if (request.isHttpError || request.isNetworkError)
