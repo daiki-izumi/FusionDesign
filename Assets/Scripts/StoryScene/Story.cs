@@ -28,6 +28,9 @@ public class Story : MonoBehaviour
     private Text lines;
     private int count;
     private GameObject bgObject;
+    //スタートボタン
+    private GameObject stObject;
+    private GameObject stbgObject;
     //選択肢のPrefab
     public GameObject choice;
     //ロードが終わったかどうかの判定
@@ -52,6 +55,7 @@ public class Story : MonoBehaviour
         //@@孫オブジェクト
         //@セリフ背景画像
         GameObject gcObject = GameObject.Find("Background_line"); //bgObject.transform.GetChild(1).gameObject;
+        //gcObject.SetActive(false);
         //@キャラクター画像
         GameObject crObject = GameObject.Find("CharaImage"); //bgObject.transform.GetChild(0).gameObject;
         //@話者
@@ -63,7 +67,10 @@ public class Story : MonoBehaviour
         lines = lnObject.GetComponent<Text>();
         lines.text = "Loading...";
         Debug.Log($"GrandChild is {gcObject.name}");
-
+        //スタートボタン
+        stObject = GameObject.Find("Start"); //bgObject.transform.GetChild(3).gameObject;
+        stbgObject = GameObject.Find("Backgroud_start");
+        
         //キャラクター画像
         Image charaimage = crObject.GetComponent<Image>();
         Texture2D chara_texture = (Texture2D)AssetDatabase.LoadAssetAtPath<Texture>(ipath + "character/Chara_male.png");
@@ -85,51 +92,28 @@ public class Story : MonoBehaviour
         lnimagetransform.localScale = new Vector3((float)0.35, (float)0.35, (float)1.0);
         //カウント
         count = 0;
-        StartCoroutine(load_line(OnFinished));
+        //StartCoroutine(load_line(OnFinished));
         //セーブロードテスト
-        fileSL.fileSaveLoad ld = new fileSL.fileSaveLoad();
+        /*fileSL.fileSaveLoad ld = new fileSL.fileSaveLoad();
         string[] l = ld.Load();
-        Debug.Log($"Load Result is {l}");
+        Debug.Log($"Load Result is {l}");*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"Flag is {load_flag}");
+        /*Debug.Log($"Flag is {load_flag}");
         if (load_flag)
         {
             //speaker.text = "Hi";
             Debug.Log($"Load is done");
-            /*if (Input.GetMouseButtonDown(0))
-            {
-                while (count <= now_line.Length - 1)
-                {
-                    Debug.Log($"Count is {count}, {now_line.Length - 1}");
-                    //lines.text = now_line[count];
-                    Debug.Log($"Clicked {now_line[count]}");
-                    count += 1;
-                }*/
-                /*do
-                {
-                    Debug.Log($"Count is {count}, {now_line.Length - 1}");
-                    //lines.text = now_line[count];
-                    //Debug.Log($"Clicked {now_line[count]}");
-                    count += 1; 
-                } while (count < now_line.Length - 1);*/
-
-            //}
-            /*else if (count == 0)
-            {
-                Debug.Log($"Not Clicked {now_line[0]}");
-                lines.text = now_line[0];
-            }*/
         }
         else
         {
             Debug.Log($"Load is not done");
             //speaker.text = "None";
             //lines.text = "None";
-        }
+        }*/
     }
     //*デバッグ用*セリフをGoogle スプレッドシートから取ってくる関数
     public IEnumerator load_line(UnityEngine.Events.UnityAction<string[,]> callback)//
@@ -173,6 +157,21 @@ public class Story : MonoBehaviour
         }
 
         callback(numnum);
+    }
+    //スタートボタンが押されたら
+    public IEnumerator startStory()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("hello");
+        //スタート画面の消去
+        stObject.SetActive(false);
+        stbgObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(load_line(OnFinished));
+    }
+    public void OnStart()
+    {
+        StartCoroutine(startStory());
     }
     //セリフのロードが完了したら
     public void OnFinished(string[,] numnum)
@@ -291,4 +290,5 @@ public class Story : MonoBehaviour
             SceneManager.LoadScene("QuizScene");*/
         SceneManager.LoadScene("QuizScene");
     }
+
 }
