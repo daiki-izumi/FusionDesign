@@ -28,6 +28,7 @@ namespace QuizGame {
 
         GameObject ListButton;
         GameObject NextButton;
+        GameObject TextButton;
         GameObject Good;
         GameObject Bad;
 
@@ -133,6 +134,36 @@ namespace QuizGame {
         }
         // button_1(Clone)
 
+
+        public void PutTextButton()
+        {
+
+            Quaternion rotation = Quaternion.identity;
+            Transform parent = _NextButtonPanel.transform;
+
+            Vector2 position = new Vector2(6, 3.7f);
+            TextButton = Instantiate(_NextButton, position, rotation, parent) as GameObject;
+
+            TextButton.GetComponent<Button>().onClick.AddListener(() => ClickTextButton());
+
+
+        }
+
+        public void ClickTextButton()
+        {
+
+            GameManager.Instance.mainTextController.OnClick();
+
+
+           
+
+        }
+        public void DestroyTextButton()
+        {
+
+            Destroy(TextButton);
+        }
+
         public void PutNextButton(string answer,string ButtonText)
         {
 
@@ -154,8 +185,6 @@ namespace QuizGame {
 
             _GoodPrehabObject[answer].gameObject.SetActive(false);
             _BadPrehabObject[ButtonText].gameObject.SetActive(false);
-
-
 
             Destroy(NextButton);
 

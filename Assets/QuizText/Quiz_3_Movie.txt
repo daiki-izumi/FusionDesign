@@ -1,4 +1,8 @@
-&img Scene5 
+&img Scene9 
+&Text
+aaaaaaa
+bbbbb
+&rmText
 &button 4 A B C D1 C 
 Question1
 kaisetusgrhsfhsersejjasfhserueaj

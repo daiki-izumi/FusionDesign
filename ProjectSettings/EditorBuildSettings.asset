@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Quiz3_Movie.unity
     guid: 0b99238bac40f474390a164b700e21f0
   - enabled: 1
-    path: Assets/Scenes/Quiz4_Ear thquake.unity
+    path: Assets/Scenes/Quiz4_Earthquake.unity
     guid: 5f3ab4afb4d20a049b70426db8f6b8c3
   m_configObjects: {}

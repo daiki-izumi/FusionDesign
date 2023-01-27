@@ -94,6 +94,12 @@ namespace QuizGame
                 case "&rmchara":
                     GameManager.Instance.characterManager.RemoveChara(words[1]);
                     break;
+                case "&Text":
+                    GameManager.Instance.buttonManager.PutTextButton();
+                    break;
+                case "&rmText":
+                    GameManager.Instance.buttonManager.DestroyTextButton();
+                    break;
                 case "&ChangeSceneStory":
                     SceneManager.LoadScene("StoryScene");
                     break;
