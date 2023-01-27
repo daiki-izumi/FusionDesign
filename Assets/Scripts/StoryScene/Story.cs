@@ -18,7 +18,7 @@ public class Story : MonoBehaviour
     //時間
     float time;
     //メインカメラ
-    public Camera targetCamera;
+    //public Camera targetCamera;
     //テキスト
     private string[,] data_all;
     private string now_speaker;
@@ -45,10 +45,6 @@ public class Story : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //キャンバスの設定
-        /*Canvas canvas = this.GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        canvas.worldCamera = targetCamera;*/
         //@@子オブジェクト
         bgObject = GameObject.Find("Background_image"); //this.transform.GetChild(0).gameObject;
         //Image charaimage = bgObject.GetComponent<Transform>().transform.GetChild(0).GetComponentInChildren<Image>();
@@ -89,21 +85,8 @@ public class Story : MonoBehaviour
         lnimagetransform.localScale = new Vector3((float)0.35, (float)0.35, (float)1.0);
         //カウント
         count = 0;
-        //int index_number = 2;
-        /*StartCoroutine(load_line(index_number, (numnum) =>
-        {
-            //Debug.Log($"called [{numnum}]");
-            split_line(numnum[index_number, 3], out now_line);
-            now_speaker = numnum[index_number, 1];
-            load_flag = true;
-            Debug.Log($"load is done");
-        }));*/
-        //speaker.text = "Oi";
         StartCoroutine(load_line(OnFinished));
         //セーブロードテスト
-        //fileSL.fileSave sv = new fileSL.fileSave();
-        //string s = sv.Save("a", "b", "c", "d");
-        //Debug.Log($"File path is {s}");
         fileSL.fileSaveLoad ld = new fileSL.fileSaveLoad();
         string[] l = ld.Load();
         Debug.Log($"Load Result is {l}");
@@ -278,6 +261,7 @@ public class Story : MonoBehaviour
     {
         show_flag = true;
         //選択肢
+        Instantiate(choice, new Vector3(5.0f, 2.0f, 0.0f), Quaternion.identity);
         GameObject choice_fabs = Instantiate(choice, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
         choice_fabs.transform.SetParent(bgObject.transform, false);
         //ボタン背景画像
