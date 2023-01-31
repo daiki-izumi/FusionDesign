@@ -68,7 +68,9 @@ namespace QuizGame
         // ñΩóﬂÇé¿çsÇ∑ÇÈ
         public void ExecuteStatement(string sentence)
         {
-            string[] words = sentence.Split(' ');
+
+            string[] words = sentence.Split(':');
+
             //words[0] ="&ñΩóﬂ"
             //words[1] = imageName;
             //words[2] = parentObjectName
@@ -119,6 +121,9 @@ namespace QuizGame
                     SceneManager.LoadScene("Story3_Purchase some grocery");
                     break;
                 case "&EndSceneQuiz2":
+                    SceneManager.LoadScene("Quiz2_Clothing");
+                    break;
+                case "&EndSceneQuiz2_2":
                     SceneManager.LoadScene("Story4_Cardriving");
                     break;
                 case "&EndSceneQuiz3":

@@ -1,0 +1,13 @@
+&img:Scene5
+&Text
+There are significant differences not only in supermarkets, but also in clothing stores
+In particular.there is a big difference in size notation between Japan and overseas.
+&rmText
+&button:4:8:8.5:9:9.5:9
+What is 27 in men's shoe size in Japan America?
+You can easily convert by adding the first and second digits.(2 + 7 = 9)
+&button:4:S:M:L:LL:L
+What size M clothes are worn by many people in Japan in the United States?
+There are differences depending on the brand, but you can basically think of it as one size higher.
+&EndSceneQuiz2_2
+ 

@@ -1,15 +1,17 @@
-&img Scene4 
-&button 4 A B C D1 C 
-Question1
-kaisetusgrhsfhsersejjasfhserueaj
-&button 4 1A. 2B. 3C. 4D. 2B.
-Question2
-kaisetu
-&img_Scene4
-&button 4 あ い う え え 
-Question3
-kaisetu
-&button 4 か き く け き 
-Question4
-kaisetu
+&img:Scene4
+&Text
+There are differences between Japan and overseas supermarkets. Let's learn here.
+&rmText
+&button:4:Pick up the product:Food and drink before checkout:Buy only one product:Getting a plastic bag:Food and drink before checkout
+What should I not do at the Japan supermarket?
+In Japan, eating and drinking before accounting is a crime.
+&button:4:16:18:20:Any age:20
+From what age can I buy alcohol in Japan?
+In Japan, you can drink and buy alcohol from the age of 20.
+&button:4:16 :18 :20 :Any age :20 
+From what age is it possible to buy cigarettes in Japan?
+You can buy cigarettes from 20 in the same way as alcohol.
+&Text
+Let's go shopping for clothes next!
 &EndSceneQuiz2
+a
