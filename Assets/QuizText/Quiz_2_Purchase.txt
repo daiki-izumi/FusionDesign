@@ -5,6 +5,7 @@ kaisetusgrhsfhsersejjasfhserueaj
 &button 4 1A. 2B. 3C. 4D. 2B.
 Question2
 kaisetu
+&img_Scene4
 &button 4 あ い う え え 
 Question3
 kaisetu
