@@ -13,7 +13,19 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: 
-    guid: 1741edc6a4d12de4282f8637631132da
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Story1_WalkingDog.unity
+    guid: c4935787c2b8cce478fb142a2c30b051
+  - enabled: 1
+    path: Assets/Scenes/Story2_Clothing.unity
+    guid: 42e78a4fda88db14f93b371a988055bb
+  - enabled: 1
+    path: Assets/Scenes/Story3_Movie.unity
+    guid: 856aefe6b3b8d9a4786d158e69088117
+  - enabled: 1
+    path: Assets/Scenes/Story4_Earthquake.unity
+    guid: 6ba88d5ad00ff9145a0eafa7ad0d952c
   - enabled: 1
     path: Assets/Scenes/Quiz1_WalkingDog.unity
     guid: 23bd378486f7bf24e962ebe3b77d2630
@@ -21,12 +33,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Quiz2_Purchase.unity
     guid: 909b45a294af1304f8f8af6f0c78885e
   - enabled: 1
+    path: Assets/Scenes/Quiz2_Clothing.unity
+    guid: 18045d398adf61f4b8290f127e39c2d3
+  - enabled: 1
     path: Assets/Scenes/Quiz3_Movie.unity
     guid: 0b99238bac40f474390a164b700e21f0
   - enabled: 1
     path: Assets/Scenes/Quiz4_Earthquake.unity
     guid: 5f3ab4afb4d20a049b70426db8f6b8c3
   - enabled: 1
-    path: Assets/Scenes/Quiz2_Clothing.unity
-    guid: 18045d398adf61f4b8290f127e39c2d3
+    path: Assets/Scenes/MiniGameCarScene.unity
+    guid: 09b59ee68955bdd4993364510e9fd5f5
+  - enabled: 1
+    path: Assets/Scenes/TrashGameScene.unity
+    guid: ba0f750d5198e5e4f80eb12845a73746
   m_configObjects: {}

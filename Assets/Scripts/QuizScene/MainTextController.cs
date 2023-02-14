@@ -19,7 +19,7 @@ namespace QuizGame
         void Start()
         {
             _time = 0f;
-            _feedTime = 0.05f;
+            _feedTime = 0.03f;
 
             // 最初の行のテキストを表示、または命令を実行
             string statement = GameManager.Instance.userScriptManager.GetCurrentSentence();
