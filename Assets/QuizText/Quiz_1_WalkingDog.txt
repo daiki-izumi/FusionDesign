@@ -1,16 +1,17 @@
-&img Scene2 
-世界の様々なところで動物は飼われています。
-ここで日本での動物を飼う際の注意点について学んでみましょう。
-&button 4 A B C D1 C 
-Question1
-kaisetusgrhsfhsersejjasfhserueaj
-&button 4 1A. 2B. 3C. 4D. 2B.
-Question2
-kaisetu
-&button 4 あ い う え え 
-Question3
-kaisetu
-&button 4 か き く け き 
-Question4
-kaisetu
+&img:Scene2
+&Text
+Animals are kept not only in Japan, but all over the world.
+Let's learn about what to look out for when raising animals in Japan.
+&rmText
+&button:4:Animal quarantine:Wear special clothing:Remind them to Stay.wait:All:Animal quarantine
+What do I need to do when bringing my pet into the Japan from overseas?
+It is necessary to quarantine for the prevention of diseases such as rabies.
+&button:4:crocodile:lion:monkey:all:all
+Which animal can't be kept as a pet in Japan?
+Birds, such as cats, dogs, parakeets and parrots, are often bred in Japan.
+&button:4:Make the lead length at least 2m:Wear special clothes:Prepare a pouch to take home: Wearing the microchip:Prepare a pouch to take home
+What should I pay attention to when walking my dog in the Japan park?
+&Text
+In the United States and other countries, you can throw the droppings in the trash can installed outdoors.
+It is bad manners to throw poop in public trash cans in Japan.
 &EndSceneQuiz1
