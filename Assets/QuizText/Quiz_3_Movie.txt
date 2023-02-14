@@ -1,9 +1,14 @@
-&img:Scene9
-&button:4:Don't buy popcorn:Big reaction:Don't clap:All:Big reaction
-What is considered bad manners in Japan movie theaters?
-Everyone quietly enjoys a movie at the Japan, Refrain from clapping and shouting.
-&button:4:Release date of Western films:Ticket Prices:Seat reservation system:All :All 
-What is the difference between Japan and overseas cinemas?
-The release date of Western films is very late compared to overseas, and the price is a little expensive. Instead, seats are reserved and pamphlets and leaflets are distributed.
+&img Scene5 
+&button 4 A B C D1 C 
+Question1
+kaisetusgrhsfhsersejjasfhserueaj
+&button 4 1A. 2B. 3C. 4D. 2B.
+Question2
+kaisetu
+&button 4 あ い う え え 
+Question3
+kaisetu
+&button 4 か き く け き 
+Question4
+kaisetu
 &EndSceneQuiz3
-  

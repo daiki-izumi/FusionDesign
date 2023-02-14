@@ -1,16 +1,14 @@
-&img:Scene8
-&Text
-It is an earthquake-prone country Japan 18.5% of earthquakes in the world occur in Japan.
-Earthquakes are inseparable from living in Japan.
-&rmText
-&button:4:Move indoors to a safe place:Checking the source of the fire:Securing the exit:Check the status in the news:Move indoors to a safe place
-What is your first priority when an earthquake occurs indoors?
-It is the action that should be prioritized in the order of ABCD. Protect yourself first.Corridors, bathrooms, etc. without falling objects are relatively safe.
-&button:4:Press the button for all floors:Open the door immediately:Shout loud:Escape from the ceiling:Press the button for all floors
-What should I do in the event of an earthquake in an elevator?
-First, let's see if we can push down the buttons on all floors right away.Do not do BCD because it only consumes physical strength.
-&button:4:Car:Bicycle:Going on foot:Anything:Going on foot
-Which one is a good means of evacuation in the event of an earthquake?
-Cars and bicycles lead to obstruction and traffic jams in emergency vehicles. I understand the urge to hurry, but let's evacuate on foot.
-&EndSceneQuiz4
- 
+&img Scene8 
+&button 4 A B C D1 C 
+Question1
+kaisetusgrhsfhsersejjasfhserueaj
+&button 4 1A. 2B. 3C. 4D. 2B.
+Question2
+kaisetu
+&button 4 あ い う え え 
+Question3
+kaisetu
+&button 4 か き く け き 
+Question4
+kaisetu
+&ChangeSceneQuiz1

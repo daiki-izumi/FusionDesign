@@ -15,8 +15,7 @@ namespace QuizGame
         [SerializeField] Sprite _Scene6;
         [SerializeField] Sprite _Scene7;
         [SerializeField] Sprite _Scene8;
-        [SerializeField] Sprite _Scene9;
-
+       
         [SerializeField] GameObject _backgroundObject;
         [SerializeField] GameObject _imagePrefab;
 
@@ -37,8 +36,7 @@ namespace QuizGame
             _textToSprite.Add("Scene6", _Scene6);
             _textToSprite.Add("Scene7", _Scene7);
             _textToSprite.Add("Scene8", _Scene8);
-            _textToSprite.Add("Scene9", _Scene9);
-
+          
 
             _textToSpriteObject = new Dictionary<string, GameObject>();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using TextScripts;
 using UnityEngine.Networking;
 using SimpleJSON;
 using UnityEngine.SceneManagement;
@@ -18,7 +19,7 @@ public class Story : MonoBehaviour
     //時間
     float time;
     //メインカメラ
-    //public Camera targetCamera;
+    public Camera targetCamera;
     //テキスト
     private string[,] data_all;
     private string now_speaker;
@@ -28,9 +29,6 @@ public class Story : MonoBehaviour
     private Text lines;
     private int count;
     private GameObject bgObject;
-    //スタートボタン
-    private GameObject stObject;
-    private GameObject stbgObject;
     //選択肢のPrefab
     public GameObject choice;
     //ロードが終わったかどうかの判定
@@ -48,35 +46,35 @@ public class Story : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //キャンバスの設定
+        Canvas canvas = this.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.worldCamera = targetCamera;
         //@@子オブジェクト
-        bgObject = GameObject.Find("Background_image"); //this.transform.GetChild(0).gameObject;
+        bgObject = this.transform.GetChild(0).gameObject;
         //Image charaimage = bgObject.GetComponent<Transform>().transform.GetChild(0).GetComponentInChildren<Image>();
         //Debug.Log($"Child is {bgObject.name}");
         //@@孫オブジェクト
         //@セリフ背景画像
-        GameObject gcObject = GameObject.Find("Background_line"); //bgObject.transform.GetChild(1).gameObject;
-        //gcObject.SetActive(false);
+        GameObject gcObject = bgObject.transform.GetChild(1).gameObject;
         //@キャラクター画像
-        GameObject crObject = GameObject.Find("CharaImage"); //bgObject.transform.GetChild(0).gameObject;
+        GameObject crObject = bgObject.transform.GetChild(0).gameObject;
         //@話者
-        GameObject spObject = GameObject.Find("Speaker"); //bgObject.transform.GetChild(2).gameObject;
+        GameObject spObject = bgObject.transform.GetChild(2).gameObject;
         speaker = spObject.GetComponent<Text>();
         speaker.text = "Loading...";
         //@セリフ
-        GameObject lnObject = GameObject.Find("Line"); //bgObject.transform.GetChild(3).gameObject;
+        GameObject lnObject = bgObject.transform.GetChild(3).gameObject;
         lines = lnObject.GetComponent<Text>();
         lines.text = "Loading...";
         Debug.Log($"GrandChild is {gcObject.name}");
-        //スタートボタン
-        stObject = GameObject.Find("Start"); //bgObject.transform.GetChild(3).gameObject;
-        stbgObject = GameObject.Find("Backgroud_start");
-        
+
         //キャラクター画像
         Image charaimage = crObject.GetComponent<Image>();
         Texture2D chara_texture = (Texture2D)AssetDatabase.LoadAssetAtPath<Texture>(ipath + "character/Chara_male.png");
         charaimage.sprite = Sprite.Create(chara_texture, new Rect(0, 0, chara_texture.width, chara_texture.height), Vector2.zero);
         Transform charatransform = crObject.GetComponent<Transform>();
-        charatransform.localScale = new Vector3((float)0.65, (float)0.65, (float)1.0);
+        charatransform.localScale = new Vector3((float)0.8, (float)0.8, (float)1.0);
 
         //背景画像
         Image bgimage = bgObject.GetComponent<Image>();
@@ -85,40 +83,74 @@ public class Story : MonoBehaviour
 
         //セリフ背景画像
         Image lnimage = gcObject.GetComponent<Image>();
-        Texture2D ln_texture = (Texture2D)AssetDatabase.LoadAssetAtPath<Texture>(ipath + "UI/Rectangle 8.png");
+        Texture2D ln_texture = (Texture2D)AssetDatabase.LoadAssetAtPath<Texture>(ipath + "UI/CharaWindow.png");
         lnimage.sprite = Sprite.Create(ln_texture, new Rect(0, 0, ln_texture.width, ln_texture.height), Vector2.zero);
-        Transform lnimagetransform = gcObject.GetComponent<Transform>();
-        lnimagetransform.position = new Vector3(0, 0, 0); ;
-        lnimagetransform.localScale = new Vector3((float)0.35, (float)0.35, (float)1.0);
+        
         //カウント
         count = 0;
-        //StartCoroutine(load_line(OnFinished));
+        //int index_number = 2;
+        /*StartCoroutine(load_line(index_number, (numnum) =>
+        {
+            //Debug.Log($"called [{numnum}]");
+            split_line(numnum[index_number, 3], out now_line);
+            now_speaker = numnum[index_number, 1];
+            load_flag = true;
+            Debug.Log($"load is done");
+        }));*/
+        //speaker.text = "Oi";
+        StartCoroutine(load_line(OnFinished));
         //セーブロードテスト
-        /*fileSL.fileSaveLoad ld = new fileSL.fileSaveLoad();
+        //fileSL.fileSave sv = new fileSL.fileSave();
+        //string s = sv.Save("a", "b", "c", "d");
+        //Debug.Log($"File path is {s}");
+        fileSL.fileSaveLoad ld = new fileSL.fileSaveLoad();
         string[] l = ld.Load();
-        Debug.Log($"Load Result is {l}");*/
+        Debug.Log($"Load Result is {l}");
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*Debug.Log($"Flag is {load_flag}");
+        Debug.Log($"Flag is {load_flag}");
         if (load_flag)
         {
             //speaker.text = "Hi";
             Debug.Log($"Load is done");
+            /*if (Input.GetMouseButtonDown(0))
+            {
+                while (count <= now_line.Length - 1)
+                {
+                    Debug.Log($"Count is {count}, {now_line.Length - 1}");
+                    //lines.text = now_line[count];
+                    Debug.Log($"Clicked {now_line[count]}");
+                    count += 1;
+                }*/
+                /*do
+                {
+                    Debug.Log($"Count is {count}, {now_line.Length - 1}");
+                    //lines.text = now_line[count];
+                    //Debug.Log($"Clicked {now_line[count]}");
+                    count += 1; 
+                } while (count < now_line.Length - 1);*/
+
+            //}
+            /*else if (count == 0)
+            {
+                Debug.Log($"Not Clicked {now_line[0]}");
+                lines.text = now_line[0];
+            }*/
         }
         else
         {
             Debug.Log($"Load is not done");
             //speaker.text = "None";
             //lines.text = "None";
-        }*/
+        }
     }
     //*デバッグ用*セリフをGoogle スプレッドシートから取ってくる関数
     public IEnumerator load_line(UnityEngine.Events.UnityAction<string[,]> callback)//
     {
-        UnityWebRequest request = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/19z89ky0ljd-cHRcqTj5LZRsJNq67AO53PV7eFEewZZQ/values/sheet1?key=AIzaSyCuqQfgKMHUOhtICFZ7m4Zq8A88EklPXi4");
+        UnityWebRequest request = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/1gM319Kf-031ZysuN3hg7oGGE8K9ZJJRiQO49wvzX6_I/values/sheet1?key=AIzaSyBRDQBQGyZwOaXENVp-xHcf0BfmVO55wC8");
         yield return request.SendWebRequest();
         string[,] numnum= new string[1, 4];
         if (request.isHttpError || request.isNetworkError)
@@ -157,21 +189,6 @@ public class Story : MonoBehaviour
         }
 
         callback(numnum);
-    }
-    //スタートボタンが押されたら
-    public IEnumerator startStory()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Debug.Log("hello");
-        //スタート画面の消去
-        stObject.SetActive(false);
-        stbgObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(load_line(OnFinished));
-    }
-    public void OnStart()
-    {
-        StartCoroutine(startStory());
     }
     //セリフのロードが完了したら
     public void OnFinished(string[,] numnum)
@@ -260,7 +277,6 @@ public class Story : MonoBehaviour
     {
         show_flag = true;
         //選択肢
-        Instantiate(choice, new Vector3(5.0f, 2.0f, 0.0f), Quaternion.identity);
         GameObject choice_fabs = Instantiate(choice, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
         choice_fabs.transform.SetParent(bgObject.transform, false);
         //ボタン背景画像
@@ -290,5 +306,4 @@ public class Story : MonoBehaviour
             SceneManager.LoadScene("QuizScene");*/
         SceneManager.LoadScene("QuizScene");
     }
-
 }
