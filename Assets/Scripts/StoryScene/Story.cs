@@ -76,7 +76,8 @@ public class Story : MonoBehaviour
         spath = "Quiz" + n + "_" + e;
         Debug.Log($"n is {n}, e is {e}, combine is {spath}");
         scene_index = int.Parse(n);
-        string[] bg_paths = new string[6] { "scene1.jpg", "bus stop.jpg", "Park.jpg", "grocery store.jpg", "Shopping.jpg", "Earthquake.jpg" };
+
+        string[] bg_paths = new string[6] { "bus stop.jpg", "scene1.jpg", "Park.jpg", "grocery store.jpg", "Shopping.jpg", "Earthquake.jpg" };
         emj_paths = new string[12] { "13.png" , "14.png" , "15.png", "11.png", "12.png", "18.png", "17.png", "19.png", "24.png", "17.png", "22.png", "25.png", };
         //@@子オブジェクト
         bgObject = GameObject.Find("Background_image"); //this.transform.GetChild(0).gameObject;
@@ -108,10 +109,11 @@ public class Story : MonoBehaviour
         string chara = "";
         fileSL.fileSaveLoad ld = new fileSL.fileSaveLoad();
         chara = ld.Load();
+        chara = "Woman/Woman - Park scene 1.png";
         Texture2D chara_texture = (Texture2D)AssetDatabase.LoadAssetAtPath<Texture>(ipath + "character/" + chara);
         charaimage.sprite = Sprite.Create(chara_texture, new Rect(0, 0, chara_texture.width, chara_texture.height), Vector2.zero);
         Transform charatransform = crObject.GetComponent<Transform>();
-        charatransform.localScale = new Vector3((float)0.65, (float)0.65, (float)1.0);
+        charatransform.localScale = new Vector3((float)0.2, (float)0.2, (float)1.0);
         Debug.Log($"chara image {chara_texture}");
 
         //背景画像
