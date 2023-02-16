@@ -71,10 +71,10 @@ public class Story : MonoBehaviour
         string nowscene = SceneManager.GetActiveScene().name;
         Debug.Log($"now scene is {nowscene}");
         string c = "Story";
-        string n = nowscene.Substring(c.Length, 1);
-        string e = nowscene.Substring(c.Length + 2);
-        spath = "Quiz" + n + "_" + e;
-        Debug.Log($"n is {n}, e is {e}, combine is {spath}");
+        string Chap = nowscene.Substring(0, 3);
+        string n = nowscene.Substring(4, 1);
+        spath = Chap + "_" + n + "_" + "Game";
+        Debug.Log($"Chap is {Chap}, n is {n}, combine is {spath}");
         scene_index = int.Parse(n);
 
         string[] bg_paths = new string[6] { "bus stop.jpg", "scene1.jpg", "Park.jpg", "grocery store.jpg", "Shopping.jpg", "Earthquake.jpg" };
