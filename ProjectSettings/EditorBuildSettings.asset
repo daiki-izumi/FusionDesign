@@ -15,16 +15,16 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Story1_WalkingDog.unity
+    path: Assets/Scenes/Mid_4_Story.unity
     guid: c4935787c2b8cce478fb142a2c30b051
   - enabled: 1
-    path: Assets/Scenes/Story2_Clothing.unity
+    path: Assets/Scenes/Mor_3_Story.unity
     guid: 42e78a4fda88db14f93b371a988055bb
   - enabled: 1
     path: Assets/Scenes/Story3_Movie.unity
     guid: 856aefe6b3b8d9a4786d158e69088117
   - enabled: 1
-    path: Assets/Scenes/Story4_Earthquake.unity
+    path: Assets/Scenes/Mor_2_Story.unity
     guid: 6ba88d5ad00ff9145a0eafa7ad0d952c
   - enabled: 1
     path: Assets/Scenes/Quiz1_WalkingDog.unity

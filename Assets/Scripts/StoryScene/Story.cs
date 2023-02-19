@@ -76,8 +76,8 @@ public class Story : MonoBehaviour
         spath = Chap + "_" + n + "_" + "Game";
         Debug.Log($"Chap is {Chap}, n is {n}, combine is {spath}");
         scene_index = int.Parse(n);
-
-        string[] bg_paths = new string[6] { "bus stop.jpg", "scene1.jpg", "Park.jpg", "grocery store.jpg", "Shopping.jpg", "Earthquake.jpg" };
+        Debug.Log($"Scene index is {scene_index}");
+        string[] bg_paths = new string[9] { "bus stop.jpg", "scene1.jpg", "Park.jpg", "grocery store.jpg", "Shopping.jpg", "Cinema.jpg", "Shopping.jpg", "scene1.jpg", "Earthquake.jpg" };
         emj_paths = new string[12] { "13.png" , "14.png" , "15.png", "11.png", "12.png", "18.png", "17.png", "19.png", "24.png", "17.png", "22.png", "25.png", };
         //@@子オブジェクト
         bgObject = GameObject.Find("Background_image"); //this.transform.GetChild(0).gameObject;
