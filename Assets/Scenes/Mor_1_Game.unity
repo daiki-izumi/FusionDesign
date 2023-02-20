@@ -824,7 +824,7 @@ MonoBehaviour:
   BW_1: {fileID: 21300000, guid: 44edb4331cb83ef4eb6dddad46df2468, type: 3}
   BW_2: {fileID: 21300000, guid: 0f108a8494482c24c83d42d9148cdfc7, type: 3}
   BW_3: {fileID: 21300000, guid: 2cf8b3c5307e66c449cd3d3f10e733ca, type: 3}
-  NBW_1: {fileID: 21300000, guid: 8b45f4902c47cab4199337321d85ab67, type: 3}
+  NBW_1: {fileID: 21300000, guid: 90278641b048aed43bf1a0d0a726cd94, type: 3}
   NBW_2: {fileID: 21300000, guid: a701824667d6ee341af5f4722202d776, type: 3}
   NBW_3: {fileID: 21300000, guid: aeb24ec4f8e3e254eb298f75029ab7e9, type: 3}
   GCP_1: {fileID: 21300000, guid: 93f6cdb53607e414589a99b675d7182b, type: 3}

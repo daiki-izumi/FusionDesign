@@ -33,7 +33,7 @@ public class SlideManager : MonoBehaviour
 
     [SerializeField] GameObject _START;
 
-   //
+    //
 
     List<GameObject> Slide;
 
@@ -56,24 +56,35 @@ public class SlideManager : MonoBehaviour
 
     bool isFadeOut;  //フェードアウト処理の開始、完了を管理するフラグ
     Image fadeImage;
+    float x_1, b_1, s_1, mag;
+
+
 
     void Awake()
     {
 
         Next_flag = false;
         Back_flag = false;
-        
+
         Slide = new List<GameObject>();
-      
+
         Transform parent = _backgroundObject.transform;
         Quaternion q = Quaternion.identity;
 
+
+
         background = Instantiate(backpanel, new Vector3(0.0f, 0.0f, 2.0f), q, parent) as GameObject;
-       
 
 
+        x_1 = Screen.width / panel.GetComponent<RectTransform>().sizeDelta.x;
+        mag = 0.8f;
 
-        panel.gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+
+        background.gameObject.transform.localScale = new Vector3(x_1, x_1, x_1);
+        //panel.gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+
+
+        panel.gameObject.transform.localScale = new Vector3(x_1 * mag, x_1 * mag, 1.0f);
 
         slide = Instantiate(panel, new Vector3(0.0f, 0.0f, 5.0f), q, parent);
         slide.GetComponent<Image>().sprite = _0;
@@ -87,24 +98,30 @@ public class SlideManager : MonoBehaviour
         slide.GetComponent<Image>().sprite = _2;
         Slide.Add(slide);
 
-      
 
-        
+
+
         slide = Instantiate(panel, new Vector3(60.0f, 0.0f, 11.0f), Quaternion.identity, _backgroundObject.transform);
         slide.GetComponent<Image>().sprite = _3;
         Slide.Add(slide);
 
-       // START.GetComponent<Transform>().localPosition = new Vector3(START.GetComponent<Transform>().localPosition.x , START.GetComponent<Transform>().localPosition.y, START.GetComponent<Transform>().localPosition.z);
-      // START.GetComponent<Transform>().localPosition = new Vector3(60.0f, 0.0f, 11.0f);
+        // START.GetComponent<Transform>().localPosition = new Vector3(START.GetComponent<Transform>().localPosition.x , START.GetComponent<Transform>().localPosition.y, START.GetComponent<Transform>().localPosition.z);
+        // START.GetComponent<Transform>().localPosition = new Vector3(60.0f, 0.0f, 11.0f);
         /*
        slide = Instantiate(panel, new Vector3(0.0f, 0.0f, 13.0f), Quaternion.identity, _backgroundObject.transform);
         slide.GetComponent<Image>().sprite = _4;
         Slide.Add(slide);
         */
+
+
+        // b_1 = Screen.width / _Next.GetComponent<RectTransform>().sizeDelta.x;
+        b_1 = Screen.width / 1920.0f;
+
         PutNext();
         PutBack();
 
         START = Instantiate(_START, new Vector3(0.0f, 0.0f, 0.0f), q, parent);
+        START.gameObject.transform.localScale = new Vector3(b_1, b_1, 1.0f);
 
 
 
@@ -122,6 +139,7 @@ public class SlideManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Screen.width);
 
         if ((Next != null) && (Back != null) && (START != null))
         {
@@ -137,7 +155,7 @@ public class SlideManager : MonoBehaviour
                 move_value += x;
 
 
-                if (move_value > 2160.0f)
+                if (move_value > Screen.height * 2)
                 {
                     OffNext();
                     move_value = 0.0f;
@@ -153,7 +171,7 @@ public class SlideManager : MonoBehaviour
 
 
 
-                if (move_value < -2160.0f)
+                if (move_value < -Screen.height * 2)
                 {
                     OffBack();
                     move_value = 0.0f;
@@ -170,7 +188,7 @@ public class SlideManager : MonoBehaviour
                 Back.GetComponent<Button>().interactable = true;
             }
 
-            if (Slide[0].GetComponent<Transform>().localPosition.x < -(2160.0f * Slide.Count) + 20.0f)
+            if (Slide[0].GetComponent<Transform>().localPosition.x < -((Screen.height + Screen.height) * Slide.Count) + 20.0f)
             {
                 Next.GetComponent<Button>().interactable = false;
             }
@@ -192,7 +210,7 @@ public class SlideManager : MonoBehaviour
             if (background.GetComponent<Image>() != null)
             {
                 //Debug.Log(fadeImage);
-             //   Debug.Log(isFadeOut);
+                //   Debug.Log(isFadeOut);
                 if (isFadeOut)
                 {
                     StartFadeOut_img();
@@ -201,7 +219,7 @@ public class SlideManager : MonoBehaviour
 
             }
 
-           
+
 
 
 
@@ -212,7 +230,7 @@ public class SlideManager : MonoBehaviour
         if (background.GetComponent<Image>() != null)
         {
             //Debug.Log(fadeImage);
-          //  Debug.Log(isFadeOut);
+            //  Debug.Log(isFadeOut);
             if (isFadeOut)
             {
                 StartFadeOut_img();
@@ -221,15 +239,15 @@ public class SlideManager : MonoBehaviour
 
         }
     }
-      
-    
 
-     void set_Nextposition()
+
+
+    void set_Nextposition()
     {
         for (int i = 0; i < Slide.Count; i++)
-            {
+        {
             Slide[i].GetComponent<Transform>().localPosition = new Vector3(Slide[i].GetComponent<Transform>().localPosition.x - x, Slide[i].GetComponent<Transform>().localPosition.y, Slide[i].GetComponent<Transform>().localPosition.z);
-            START.GetComponent<Transform>().localPosition = new Vector3(Slide[i].GetComponent<Transform>().localPosition.x - x + 2160.0f, Slide[i].GetComponent<Transform>().localPosition.y, Back.GetComponent<Transform>().localPosition.z);
+            START.GetComponent<Transform>().localPosition = new Vector3(Slide[i].GetComponent<Transform>().localPosition.x - x + (Screen.height * 2), Slide[i].GetComponent<Transform>().localPosition.y, Back.GetComponent<Transform>().localPosition.z);
         }
 
 
@@ -271,19 +289,21 @@ public class SlideManager : MonoBehaviour
     void PutNext()
     {
         Next = Instantiate(_Next, new Vector3(7.5f, -3.8f, 2.0f), Quaternion.identity, _backgroundObject.transform);
+        Next.gameObject.transform.localScale = new Vector3(b_1, b_1, 1.0f);
     }
 
     void PutBack()
     {
-        
+
         Back = Instantiate(_Back, new Vector3(-7.5f, -3.8f, 2.0f), Quaternion.identity, _backgroundObject.transform);
+        Back.gameObject.transform.localScale = new Vector3(b_1, b_1, 1.0f);
     }
 
     void ClickSTART()
     {
 
-       
-       isFadeOut = true;
+
+        isFadeOut = true;
         gameManager.play();
 
     }
@@ -294,12 +314,12 @@ public class SlideManager : MonoBehaviour
     {
         alfa_img -= fadeSpeed;                //a)不透明度を徐々に下げる
         SetAlpha_img();
-       // Debug.Log("ffffff");//b)変更した不透明度パネルに反映する
+        // Debug.Log("ffffff");//b)変更した不透明度パネルに反映する
         if (alfa_img <= 0)
         {                    //c)完全に透明になったら処理を抜ける
 
             // Debug.Log("ffffff");
-              isFadeOut = false;
+            isFadeOut = false;
             Destroy(Back);
             Destroy(Next);
             Destroy(START);

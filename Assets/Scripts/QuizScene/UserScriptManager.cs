@@ -8,21 +8,21 @@ namespace QuizGame
     public class UserScriptManager : MonoBehaviour
     {
         [SerializeField] TextAsset _textFile;
-       
+
         // 文章中の文（ここでは１行ごと）を入れておくためのリスト
         List<string> _sentences = new List<string>();
         List<string> _question = new List<string>();
         public static int StoryFlag;
-      
+
 
         void Awake()
         {
-            
+
             //add
             string story;
-           
-             story = _textFile.text;
-     //StringReader reader = new StringReader(_textFile.text);
+
+            story = _textFile.text;
+            //StringReader reader = new StringReader(_textFile.text);
             StringReader reader = new StringReader(story);
             // テキストファイルの中身を、１行ずつリストに入れておく
 
@@ -86,7 +86,7 @@ namespace QuizGame
                     GameManager.Instance.imageManager.RemoveImage(words[1]);
                     break;
                 case "&button":
-                    GameManager.Instance.buttonManager.PutButton(words[1] ,words[2],words[3], words[4], words[5], words[6]);
+                    GameManager.Instance.buttonManager.PutButton(words[1], words[2], words[3], words[4], words[5], words[6]);
                     break;
                 case "&chara":
                     GameManager.Instance.characterManager.PutChara(words[1]);
@@ -116,16 +116,16 @@ namespace QuizGame
                     SceneManager.LoadScene("Quiz4_Earthquake");
                     break;
                 case "&EndSceneQuiz1":
-                    SceneManager.LoadScene("Story3_Purchase some grocery");
+                    SceneManager.LoadScene("Mor_3_Story");
                     break;
                 case "&EndSceneQuiz2":
-                    SceneManager.LoadScene("Quiz2_Clothing");
+                    SceneManager.LoadScene("Mor_3_Game_2");
                     break;
                 case "&EndSceneQuiz2_2":
-                    SceneManager.LoadScene("Story4_Cardriving");
+                    SceneManager.LoadScene("Mid_4_Story");
                     break;
                 case "&EndSceneQuiz3":
-                    SceneManager.LoadScene("Story7_Enjoy Karaoke");
+                    SceneManager.LoadScene("Eve_7_Story");
                     break;
                 case "&EndSceneQuiz4":
                     SceneManager.LoadScene("FinalScene");

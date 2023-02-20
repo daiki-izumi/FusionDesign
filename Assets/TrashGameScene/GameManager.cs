@@ -8,6 +8,7 @@ using UniRx.Triggers;
 using System.Diagnostics;
 using Random = System.Random;
 using Debug = UnityEngine.Debug;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
     float BeatRange;
     List<float> NoteTimings; // 追加
 
-    public bool touch_BW ;
+    public bool touch_BW;
     public bool touch_NBW;
     public bool touch_GCP;
     public bool touch_OW;
@@ -105,8 +106,8 @@ public class GameManager : MonoBehaviour
         isPlaying = false;
         GoIndex = 0;
 
-        CheckRange = 220; 
-        BeatRange = 120; 
+        CheckRange = 220;
+        BeatRange = 120;
 
         BW = new List<Sprite>();
         BW.Add(BW_1);
@@ -127,20 +128,20 @@ public class GameManager : MonoBehaviour
         OW = new List<Sprite>();
         OW.Add(OW_1);
         OW.Add(OW_2);
-      
 
-        if(one = true)
+
+        if (one = true)
         {
             loadChart();
             one = false;
-            touch_BW= false;
-            touch_NBW= false;
-            touch_GCP= false;
-            touch_OW= false;
+            touch_BW = false;
+            touch_NBW = false;
+            touch_GCP = false;
+            touch_OW = false;
         }
 
 
-    
+
 
 
         touch_BW = false;
@@ -155,44 +156,44 @@ public class GameManager : MonoBehaviour
               GoIndex++;
           });
 
-    
 
-               this.UpdateAsObservable()
-                   .Where(_ => isPlaying)
-                   .Where(_ => Input.GetKeyDown(KeyCode.V))
-                   .Subscribe(_ => {
-                       beat("1", Time.time * 1000 - PlayTime);
-                       effectManager.setboolBW();
-                   });
-
-               
-               this.UpdateAsObservable()
-                 .Where(_ => isPlaying)
-                 .Where(_ => Input.GetKeyDown(KeyCode.B))
-                 .Subscribe(_ => {
-                     beat("2", Time.time * 1000 - PlayTime);
-                     effectManager.setboolNBW();
-                 });
-
-               this.UpdateAsObservable()
-                   .Where(_ => isPlaying)
-                   .Where(_ => Input.GetKeyDown(KeyCode.N))
-                   .Subscribe(_ => {
-                       beat("3", Time.time * 1000 - PlayTime);
-                       effectManager.setboolGCP();
-                   });
-
-                this.UpdateAsObservable()
-                   .Where(_ => isPlaying)
-                   .Where(_ => Input.GetKeyDown(KeyCode.M))
-                   .Subscribe(_ => {
-                      beat("4", Time.time * 1000 - PlayTime);
-                       effectManager.setboolOW();
-                   });
 
         this.UpdateAsObservable()
-                  .Where(_ => touch_BW )
-                 // .Where(_ => Input.GetKeyDown(KeyCode.V))
+            .Where(_ => isPlaying)
+            .Where(_ => Input.GetKeyDown(KeyCode.V))
+            .Subscribe(_ => {
+                beat("1", Time.time * 1000 - PlayTime);
+                effectManager.setboolBW();
+            });
+
+
+        this.UpdateAsObservable()
+          .Where(_ => isPlaying)
+          .Where(_ => Input.GetKeyDown(KeyCode.B))
+          .Subscribe(_ => {
+              beat("2", Time.time * 1000 - PlayTime);
+              effectManager.setboolNBW();
+          });
+
+        this.UpdateAsObservable()
+            .Where(_ => isPlaying)
+            .Where(_ => Input.GetKeyDown(KeyCode.N))
+            .Subscribe(_ => {
+                beat("3", Time.time * 1000 - PlayTime);
+                effectManager.setboolGCP();
+            });
+
+        this.UpdateAsObservable()
+           .Where(_ => isPlaying)
+           .Where(_ => Input.GetKeyDown(KeyCode.M))
+           .Subscribe(_ => {
+               beat("4", Time.time * 1000 - PlayTime);
+               effectManager.setboolOW();
+           });
+
+        this.UpdateAsObservable()
+                  .Where(_ => touch_BW)
+                  // .Where(_ => Input.GetKeyDown(KeyCode.V))
                   .Subscribe(_ => {
                       beat("1", Time.time * 1000 - PlayTime);
                       effectManager.setboolBW();
@@ -227,18 +228,19 @@ public class GameManager : MonoBehaviour
                   });
 
         this.UpdateAsObservable()
-                  .Where(_ => isPlaying)               
+                  .Where(_ => isPlaying)
                   .Subscribe(_ => {
-                     end_time += Time.deltaTime;
+                      end_time += Time.deltaTime;
                       Debug.Log(end_time);
-                      if(end_time > 45.0f)
+                      if (end_time > 45.0f)
                       {
-                        //  Debug.Log("ddddddddddddd");
-                        //Scene
+                          //  Debug.Log("ddddddddddddd");
+                          //Scene
+                          SceneManager.LoadScene("Mor_2_Story");
                       }
                   });
 
-     
+
 
 
 
@@ -249,14 +251,14 @@ public class GameManager : MonoBehaviour
     void loadChart()
     {
         Music.clip = (AudioClip)Resources.Load(ClipPath_BGM); // 追加
-       // SE.clip = (AudioClip)Resources.Load(ClipPath_SE); // 追加
+                                                              // SE.clip = (AudioClip)Resources.Load(ClipPath_SE); // 追加
 
         Notes = new List<GameObject>();
         NoteTimings = new List<float>(); // 追加
 
         string jsonText = Resources.Load<TextAsset>(FilePath).ToString();
-    
-        JsonNode json    =    JsonNode.Parse(jsonText);
+
+        JsonNode json = JsonNode.Parse(jsonText);
 
         Title = json["title"].Get<string>();
         BPM = int.Parse(json["bpm"].Get<string>());
@@ -273,8 +275,8 @@ public class GameManager : MonoBehaviour
             if (type == "1")
             {
                 Note = Instantiate(_1, SpawnPoint.position, Quaternion.identity);
-                Note.GetComponent<SpriteRenderer>().sprite = BW[ranNum%BW.Count];
-                
+                Note.GetComponent<SpriteRenderer>().sprite = BW[ranNum % BW.Count];
+
             }
             else if (type == "2")
             {
@@ -284,7 +286,7 @@ public class GameManager : MonoBehaviour
             else if (type == "3")
             {
                 Note = Instantiate(_3, SpawnPoint.position, Quaternion.identity);
-                Note.GetComponent<SpriteRenderer>().sprite = GCP[ranNum%GCP.Count];
+                Note.GetComponent<SpriteRenderer>().sprite = GCP[ranNum % GCP.Count];
             }
             else if (type == "4")
             {
@@ -303,7 +305,7 @@ public class GameManager : MonoBehaviour
             NoteTimings.Add(timing); // 追加
         }
 
-       
+
     }
 
     // 追加
@@ -332,8 +334,8 @@ public class GameManager : MonoBehaviour
                 NoteTimings[minDiffIndex] = -1;
                 Notes[minDiffIndex].SetActive(false);
                 MessageEffectSubject.OnNext("good"); // イベントを通知
-               // SE.Play();
-                //スコア加算
+                                                     // SE.Play();
+                                                     //スコア加算
             }
             else
             {
