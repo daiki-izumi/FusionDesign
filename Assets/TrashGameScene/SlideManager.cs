@@ -14,7 +14,7 @@ public class SlideManager : MonoBehaviour
 
     [SerializeField] GameManager gameManager;
 
-
+    [SerializeField] GameObject ground;
 
     [SerializeField] Sprite _0;
     [SerializeField] Sprite _1;
@@ -40,7 +40,7 @@ public class SlideManager : MonoBehaviour
     GameObject Next;
 
     GameObject Back;
-    GameObject slide, background;
+    GameObject slide, background, gamepanel;
 
     GameObject START;
     float x;
@@ -51,12 +51,12 @@ public class SlideManager : MonoBehaviour
     int list_number;
 
 
-    float fadeSpeed = 0.001f;        //透明度が変わるスピードを管理
+    float fadeSpeed = 0.01f;        //透明度が変わるスピードを管理
     float red_img, green_img, blue_img, alfa_img;   //パネルの色、不透明度を管理
 
     bool isFadeOut;  //フェードアウト処理の開始、完了を管理するフラグ
     Image fadeImage;
-    float x_1, b_1, s_1, mag;
+    float x_1,y_1, b_1, s_1, mag;
 
 
 
@@ -74,13 +74,18 @@ public class SlideManager : MonoBehaviour
 
 
         background = Instantiate(backpanel, new Vector3(0.0f, 0.0f, 2.0f), q, parent) as GameObject;
-
-
+        
         x_1 = Screen.width / panel.GetComponent<RectTransform>().sizeDelta.x;
+        y_1 = Screen.height / panel.GetComponent<RectTransform>().sizeDelta.y;
+
+      //  x_1 =  panel.GetComponent<RectTransform>().sizeDelta.x/Screen.width ;
+       // y_1 =  panel.GetComponent<RectTransform>().sizeDelta.y /Screen.height;
+
         mag = 0.8f;
 
 
-        background.gameObject.transform.localScale = new Vector3(x_1, x_1, x_1);
+        background.gameObject.transform.localScale = new Vector3(x_1, y_1, x_1);
+      //  ground.gameObject.transform.localScale = new Vector3(x_1, y_1, 1.0f);
         //panel.gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 
 
@@ -150,7 +155,7 @@ public class SlideManager : MonoBehaviour
 
             if (Next_flag)
             {
-                x = 3.1f;
+                x = 30.0f;
                 set_Nextposition();
                 move_value += x;
 
@@ -165,7 +170,7 @@ public class SlideManager : MonoBehaviour
 
             if (Back_flag)
             {
-                x = 3.1f;
+                x = 30.0f;
                 set_Backposition();
                 move_value -= x;
 

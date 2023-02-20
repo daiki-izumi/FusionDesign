@@ -58,7 +58,7 @@ public class EffectManager : MonoBehaviour
         
         if (isEffect_BW)
         {
-            move_BW += 0.01f;
+            move_BW += 0.1f;
             Effect();
             if(move_BW > 1.0f)
             {
@@ -69,7 +69,7 @@ public class EffectManager : MonoBehaviour
 
         if (isEffect_NBW)
         {
-            move_NBW += 0.01f;
+            move_NBW += 0.1f;
             Effect();
             if (move_NBW > 1.0f)
             {
@@ -80,7 +80,7 @@ public class EffectManager : MonoBehaviour
 
         if (isEffect_GCP)
         {
-            move_GCP += 0.01f;
+            move_GCP += 0.1f;
             Effect();
             if (move_GCP > 1.0f)
             {
@@ -91,7 +91,7 @@ public class EffectManager : MonoBehaviour
 
         if (isEffect_OW)
         {
-            move_OW += 0.01f;
+            move_OW += 0.1f;
             Effect();
             if (move_OW > 1.0f)
             {

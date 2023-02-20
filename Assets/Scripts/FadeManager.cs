@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FadeManager : MonoBehaviour
 {
 
-    float fadeSpeed = 0.001f;        //透明度が変わるスピードを管理
+    float fadeSpeed = 0.01f;        //透明度が変わるスピードを管理
     float red_img, green_img, blue_img, alfa_img;   //パネルの色、不透明度を管理
     float red_te, green_te, blue_te,alfa_te;
 

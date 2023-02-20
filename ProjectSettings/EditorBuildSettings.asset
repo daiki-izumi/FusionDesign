@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartScene.unity
-    guid: e040aee5c54f6d046b4ea5d85288d79b
+    path: Assets/Scenes/Start_Kumazawa.unity
+    guid: f712f9495f08768448a73af22a7fc7e9
   - enabled: 1
     path: Assets/Scenes/Mor_1_Story.unity
     guid: 9a26d6ca4c132004380cdf2c544a5023
@@ -53,7 +53,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Eve_8_Game.unity
     guid: 5f3ab4afb4d20a049b70426db8f6b8c3
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects: {}

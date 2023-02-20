@@ -1307,6 +1307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 392236039}
+  ground: {fileID: 1804625229}
   _0: {fileID: 21300000, guid: a710bd2e18cb14e4e9214f6508311058, type: 3}
   _1: {fileID: 21300000, guid: fae3ba95cbba1064684f9c70e373576d, type: 3}
   _2: {fileID: 21300000, guid: d99ada34d8b31c147b16cd94372ef34b, type: 3}
@@ -1616,7 +1617,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 12000}
   m_LocalScale: {x: 100, y: 100, z: 108}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1875511710}
   m_RootOrder: 0
