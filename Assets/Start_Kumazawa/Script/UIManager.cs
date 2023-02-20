@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 //add
 using fileSL;
+using Debug = UnityEngine.Debug;
 //
 public class UIManager : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class UIManager : MonoBehaviour
         SelectScenePanel.SetActive(true);
         //add
         ld.Save("Chara_male.png");
+        Debug.Log(ld.Load());
 
     }
 
@@ -58,6 +60,7 @@ public class UIManager : MonoBehaviour
         SelectScenePanel.SetActive(true);
         //add
         ld.Save("Chara_female.png");
+        Debug.Log(ld.Load());
     }
 
     public void BackToMenu()
@@ -80,7 +83,7 @@ public class UIManager : MonoBehaviour
     }
     public void ClickEvening()
     {
-        SceneManager.LoadScene("Eve_7_Story");
+        SceneManager.LoadScene("Eve_8_Story");
     }
     //add
 
