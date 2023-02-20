@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject SelectScenePanel;
 
     //add
-    public fileSL.fileSaveLoad ld;
+    public static fileSL.fileSaveLoad ld;
 
     // Start is called before the first frame update
     void Awake()
@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
         SelectCharacterPanel1.SetActive(false);
         SelectScenePanel.SetActive(true);
         //add
-       // ld.Save("Chara_female.png");
+        ld.Save("Chara_female.png");
     }
 
     public void BackToMenu()
@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
     //add
     public void ClickMorning()
     {
-        SceneManager.LoadScene("Mor_1_Game");
+        SceneManager.LoadScene("Mor_1_Story");
     }
     public void ClickMidday()
     {

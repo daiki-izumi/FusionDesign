@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+
+using fileSL;
+
 
 namespace QuizGame
 {
@@ -57,7 +61,7 @@ namespace QuizGame
             _textToSpriteObject.Add(imageName, item);//Prehabを操作するための辞書にitemを格納
 
 
-            if (true) { //ユーザー情報次第
+            if (UIManager.ld.Load() == "Chara_female.png") { //ユーザー情報次第
                 GameManager.Instance.characterManager.PutChara("Woman");
             } else
             {
