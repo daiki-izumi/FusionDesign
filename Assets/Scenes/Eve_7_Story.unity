@@ -298,7 +298,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7780303337454274224}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Story, Assembly-CSharp
         m_MethodName: OnStart
         m_Mode: 1
@@ -455,7 +455,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 717879294}
-  - component: {fileID: 717879293}
   - component: {fileID: 717879295}
   - component: {fileID: 717879296}
   m_Layer: 0
@@ -465,19 +464,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &717879293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717879292}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ac0359bf315b246859c97e9fc92146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choice: {fileID: 0}
 --- !u!4 &717879294
 Transform:
   m_ObjectHideFlags: 0
@@ -783,7 +769,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7780303337454274224}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Story, Assembly-CSharp
         m_MethodName: OnStop
         m_Mode: 1
@@ -931,7 +917,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7780303337454274224}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Story, Assembly-CSharp
         m_MethodName: OnBack
         m_Mode: 1
@@ -1161,7 +1147,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7780303337454274224}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Story, Assembly-CSharp
         m_MethodName: OnNext
         m_Mode: 1
@@ -1705,7 +1691,7 @@ GameObject:
   - component: {fileID: 7780303337454274216}
   - component: {fileID: 7780303337454274217}
   - component: {fileID: 2167990723884144603}
-  - component: {fileID: 7780303337454274224}
+  - component: {fileID: 7780303337454274223}
   m_Layer: 5
   m_Name: UI_Line
   m_TagString: Untagged
@@ -1713,7 +1699,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7780303337454274224
+--- !u!114 &7780303337454274223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1722,10 +1708,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7780303337454274222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ac0359bf315b246859c97e9fc92146, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ef146c0f6d0bd4f9b0633a4094cab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choice: {fileID: 3630861998810580537, guid: 1383657581176f14f879b57d4f972617, type: 3}
+  choice: {fileID: 0}
 --- !u!222 &7962569937607011849
 CanvasRenderer:
   m_ObjectHideFlags: 0
