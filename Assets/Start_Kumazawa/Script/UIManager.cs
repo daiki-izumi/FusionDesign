@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
     }
     public void ClickMidday()
     {
-        SceneManager.LoadScene("Mid_5_Story");
+        SceneManager.LoadScene("Mid_4_Story");
     }
     public void ClickEvening()
     {

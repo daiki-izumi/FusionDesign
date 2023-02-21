@@ -125,7 +125,7 @@ namespace QuizGame
                     SceneManager.LoadScene("Mid_4_Story");
                     break;
                 case "&EndSceneQuiz3":
-                    SceneManager.LoadScene("Eve_7_Story");
+                    SceneManager.LoadScene("Eve_8_Story");
                     break;
                 case "&EndSceneQuiz4":
                     SceneManager.LoadScene("FinishScene");

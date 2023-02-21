@@ -30,7 +30,8 @@ public class MoveRoad : MonoBehaviour
         if (roadTransform.position.y < -230.0f)
         {
             Debug.Log("End");
-            SceneManager.LoadScene(spath);
+            // SceneManager.LoadScene(spath);
+            SceneManager.LoadScene("Mid_6_Story");
         }
         else
         {

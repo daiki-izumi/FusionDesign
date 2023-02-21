@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mid_5_Story.unity
     guid: 2d4c59e710ffd3b42bde982f4eefb2c4
   - enabled: 1
-    path: Assets/Scenes/Mid_5_Game.unity
+    path: Assets/Scenes/Mid_6_Game.unity
     guid: 0b99238bac40f474390a164b700e21f0
   - enabled: 1
     path: Assets/Scenes/Mid_6_Story.unity

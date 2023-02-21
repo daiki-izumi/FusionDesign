@@ -62,6 +62,7 @@ namespace QuizGame
 
 
             if (UIManager.ld.Load() == "Chara_female.png") { //ƒ†[ƒU[î•ñŸ‘æ
+              //  if (true) { 
                 GameManager.Instance.characterManager.PutChara("Woman");
             } else
             {
